@@ -17,6 +17,16 @@ class Asilo:
         self.yDinRoom = 1.5778
         self.xGarden = 3.125654
         self.yGarden = -1.9778
+=======
+        self.xCafe = -0.5256
+        self.yCafe = 1.88
+        self.xOffice1 = 1.1181
+        self.yOffice1 = 2.7854
+        self.xOffice2 = 6.0732	
+        self.yOffice2 = -4.6715
+        self.xOffice3 = -6.5520
+        self.yOffice3 = -1.9778
+>>>>>>> 4bde79d1c1a91f0c702e8ad3742b8f92fc562818
         self.goalReached = False
 
         #self.mapa = "map"

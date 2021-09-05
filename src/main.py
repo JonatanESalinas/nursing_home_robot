@@ -10,6 +10,7 @@ from asilo import Asilo
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     while 1:
 
         mi_Asilo = Asilo()
@@ -91,4 +92,5 @@ if __name__ == '__main__':
             rospy.loginfo("You have reached the destination")
         else:
             rospy.loginfo("The robot failed to reach the destination")
+
 
