@@ -2,7 +2,6 @@ class Asilo:
     def __init__(self):
 
         # declare the coordinates of interes
-<<<<<<< HEAD
         self.xRespawn = -2.9973
         self.yRespawn = 0.9609
         self.xRoom1 = 0.982978
