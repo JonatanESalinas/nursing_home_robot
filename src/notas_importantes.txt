@@ -1,0 +1,39 @@
+
+Si aparece el error de que no encuentra el paquete al querer correr rosrun, ejecutar
+este comando:
+    source ~/catkin_ws/devel/setup.bash
+
+Si aparece un error de que "Found the following, but they’re either not files or not exe..." ejecutar este comando, para dar permisos de ejecucion:
+    chmod +x archivo.py
+Ejecutar este comando de arriba SIEMPRE al crear un nuevo archivo python para
+usarlo con ROS.
+
+Tambien, no olvidar siempre poner hasta arriba del codigo la siguiente linea:
+    #!/usr/bin/env python3
+    
+Corri los comandos aqui para que me dejara descargar los paquetes de ros
+para pyhton3:
+https://askubuntu.com/questions/1109982/e-could-not-get-lock-var-lib-dpkg-lock-frontend-open-11-resource-temporari 
+
+
+    
+    NOTAS para comentar:
+
+-ROS Kinetic corre con Python 2.7. Para hacer que corra con Python3 hay que hacer un proceso que se ve largo y algo complicado.
+
+https://answers.ros.org/question/237613/how-to-define-ros-kinetic-to-use-python3-instead-of-python27/
+
+https://medium.com/@inderpreetsinghchhabra/using-python3-with-ros-kinetic-2488354efece
+
+https://stackoverflow.com/questions/49758578/installation-guide-for-ros-kinetic-with-python-3-5-on-ubuntu-16-04
+
+PERO, parece que este tutorial lo arreglaria (hay que intentar):
+https://dhanoopbhaskar.com/blog/2020-05-07-working-with-python-3-in-ros-kinetic-or-melodic/
+
+-La RP4 no soporta ROS Kinetic.
+
+
+
+
+    
+    
