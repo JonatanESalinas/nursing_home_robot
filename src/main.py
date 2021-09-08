@@ -6,22 +6,24 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from actionlib_msgs.msg import *
 from geometry_msgs.msg import Point
 from asilo import Asilo
-
-
+from robot import Robot
 
 if __name__ == '__main__':
+
+    mi_Asilo = Asilo()
+    mi_Robot = Robot()
+
+
+    print("xddxdxdx")
+    rospy.loginfo("Iniciando nodo del robot...")
+    rospy.init_node('nodo_robot')
+
+    clienteAccionBase = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
+    rospy.loginfo("Esperando al action server move_base...")
+    clienteAccionBase.wait_for_server()
+    rospy.loginfo("Action server move_base identificado y listo.")
+
     while 1:
-
-        mi_Asilo = Asilo()
-
-        print("xddxdxdx")
-        rospy.loginfo("Iniciando nodo del robot...")
-        rospy.init_node('nodo_robot')
-
-        clienteAccionBase = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
-        rospy.loginfo("Esperando al action server move_base...")
-        clienteAccionBase.wait_for_server()
-        rospy.loginfo("Action server move_base identificado y listo.")
 
         goal = MoveBaseGoal()
 
@@ -89,6 +91,7 @@ if __name__ == '__main__':
 
         if(clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
             rospy.loginfo("You have reached the destination")
+            mi_Robot.decir_hola_hora_medicina()
         else:
             rospy.loginfo("The robot failed to reach the destination")
 
