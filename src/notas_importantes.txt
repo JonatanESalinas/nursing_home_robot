@@ -33,7 +33,8 @@ https://dhanoopbhaskar.com/blog/2020-05-07-working-with-python-3-in-ros-kinetic-
 -La RP4 no soporta ROS Kinetic.
 
 
-
-
+-Cuando todo esta en una sola launch file, no jala el audio; si esta solo navegacion y simulacion en launch file, y el menu se ejecuta
+con rosrun, si jala el audio.
+-Siempre revisar los permisos de las files.
     
     

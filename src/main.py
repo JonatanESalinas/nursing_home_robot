@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+'''
+   Para correr la simulacion:
+        Terminal 1:
+            roslaunch nursing_home_robot nursing_home_simulation.launch
+        Terminal 2:
+            rosrun nursing_home_robot main.py
+        Terminal 3:
+            roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+            (Acomodar el TurtleBot y cerrar este nodo).
+'''
 
 import rospy
 import actionlib
