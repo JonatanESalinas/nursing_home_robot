@@ -1,6 +1,8 @@
 class Asilo:
     def __init__(self):
 
+        #PONER AQUI UNA LISTA DE PERSONAS HABITANTES DEL ASILO?
+
         # declare the coordinates of interes
         self.xRespawn = -2.9973
         self.yRespawn = 0.9609

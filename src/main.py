@@ -15,6 +15,8 @@ import actionlib
 from actionlib_msgs.msg import *
 from asilo import Asilo
 from robot import Robot
+from recorrido import Recorrido
+import threading
 
 def imprimir_menu_temporal():
     print(' ______________________________________________________')
@@ -45,6 +47,11 @@ def imprimir_menu_temporal():
     print('|                                                      |')
     print('|------------------------------------------------------|')
 
+
+def funcion_nuevo_recorrido(unRecorrido, nombre_recorrido):
+    hilo_pendiente_de_la_hora = threading.Thread(target= mi_Robot.checa_la_hora, args=(unRecorrido,), name=nombre_recorrido)
+    hilo_pendiente_de_la_hora.start()
+
 if __name__ == '__main__':
 
     rospy.loginfo("Iniciando nodo main...")
@@ -55,6 +62,21 @@ if __name__ == '__main__':
 
     while 1:
 
+        print("Ajusta recorrido 1:")
+
+        hora_elegida = int(input())
+        minutos_elegidos = int(input())
+        nombreTemp = raw_input()
+
+        print("Creando nuevo recorrido 1...")
+
+        nuevoRecorrido1 = Recorrido(mi_Asilo.xRoom1, mi_Asilo.yRoom1, hora_elegida, minutos_elegidos)
+
+        funcion_nuevo_recorrido(nuevoRecorrido1, nombreTemp)
+
+        print("aca ando")
+
+        '''
         choice='q'
         imprimir_menu_temporal()
         choice = (input())
@@ -98,3 +120,4 @@ if __name__ == '__main__':
             rospy.loginfo("The robot failed to reach the destination")
 
 
+        '''
