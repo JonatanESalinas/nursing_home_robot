@@ -2,7 +2,7 @@
 '''
    Para correr la simulacion:
         Terminal 1:
-            roslaunch nursing_home_robot nursing_home_simulation.launch
+            roslaunch nursing_home_robot nursing_robot_simulation.launch
         Terminal 2 (correr en el folder nursing_home_robot/src/ ):
             rosrun nursing_home_robot main.py
         Terminal 3:
@@ -76,48 +76,3 @@ if __name__ == '__main__':
 
         print("aca ando")
 
-        '''
-        choice='q'
-        imprimir_menu_temporal()
-        choice = (input())
-        print(choice)
-
-        proximoObjetivo_x = 0
-        proximoObjetivo_y = 0
-
-        if (choice==1):
-            proximoObjetivo_x = mi_Asilo.xRespawn
-            proximoObjetivo_y = mi_Asilo.yRespawn
-        elif (choice==2):
-            proximoObjetivo_x = mi_Asilo.xRoom1
-            proximoObjetivo_y = mi_Asilo.yRoom1
-        elif (choice==3):
-            proximoObjetivo_x = mi_Asilo.xRoom2
-            proximoObjetivo_y = mi_Asilo.yRoom2
-        elif (choice==4):
-            proximoObjetivo_x = mi_Asilo.xRoom3
-            proximoObjetivo_y = mi_Asilo.yRoom3
-        elif (choice==5):
-            proximoObjetivo_x = mi_Asilo.xRoom4
-            proximoObjetivo_y = mi_Asilo.yRoom4
-        elif (choice==6):
-            proximoObjetivo_x = mi_Asilo.xGarden
-            proximoObjetivo_y = mi_Asilo.yGarden
-        elif (choice==7):
-            proximoObjetivo_x = mi_Asilo.xDinRoom
-            proximoObjetivo_y = mi_Asilo.yDinRoom
-        elif (choice==8):
-            sys.exit()
-
-        mi_Robot.ve_a_habitacion(proximoObjetivo_x, proximoObjetivo_y)
-
-        mi_Robot.clienteAccionBase.wait_for_result(rospy.Duration(60))
-
-        if(mi_Robot.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
-            rospy.loginfo("You have reached the destination")
-            mi_Robot.decir_hola_hora_medicina()
-        else:
-            rospy.loginfo("The robot failed to reach the destination")
-
-
-        '''

@@ -68,6 +68,15 @@ class Robot:
                     if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
                         rospy.loginfo("You have reached the destination")
                         self.decir_hola_hora_medicina()
+
+                        #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
+
+                            #Se hace todo el proceso de autenticacion, entrega de medicina
+
+                        #Se avisa a la Rasp del turtlebot que ya acabo el proceso
+                        #EL robot debe ir de regreso a su base.                   
+
+
                     else:
                         rospy.loginfo("The robot failed to reach the destination")
                         
