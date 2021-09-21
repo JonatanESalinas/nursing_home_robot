@@ -2,7 +2,7 @@
 '''
    Para correr la simulacion:
         Terminal 1:
-            roslaunch nursing_home_robot nursing_home_simulation.launch
+            roslaunch nursing_home_robot nursing_robot_simulation.launch
         Terminal 2 (correr en el folder nursing_home_robot/src/ ):
             rosrun nursing_home_robot main.py
         Terminal 3:
@@ -15,6 +15,8 @@ import actionlib
 from actionlib_msgs.msg import *
 from asilo import Asilo
 from robot import Robot
+from recorrido import Recorrido
+import threading
 
 def imprimir_menu_temporal():
     print(' ______________________________________________________')
@@ -45,6 +47,11 @@ def imprimir_menu_temporal():
     print('|                                                      |')
     print('|------------------------------------------------------|')
 
+
+def funcion_nuevo_recorrido(unRecorrido, nombre_recorrido):
+    hilo_pendiente_de_la_hora = threading.Thread(target= mi_Robot.checa_la_hora, args=(unRecorrido,), name=nombre_recorrido)
+    hilo_pendiente_de_la_hora.start()
+
 if __name__ == '__main__':
 
     rospy.loginfo("Iniciando nodo main...")
@@ -55,46 +62,17 @@ if __name__ == '__main__':
 
     while 1:
 
-        choice='q'
-        imprimir_menu_temporal()
-        choice = (input())
-        print(choice)
+        print("Ajusta recorrido 1:")
 
-        proximoObjetivo_x = 0
-        proximoObjetivo_y = 0
+        hora_elegida = int(input())
+        minutos_elegidos = int(input())
+        nombreTemp = raw_input()
 
-        if (choice==1):
-            proximoObjetivo_x = mi_Asilo.xRespawn
-            proximoObjetivo_y = mi_Asilo.yRespawn
-        elif (choice==2):
-            proximoObjetivo_x = mi_Asilo.xRoom1
-            proximoObjetivo_y = mi_Asilo.yRoom1
-        elif (choice==3):
-            proximoObjetivo_x = mi_Asilo.xRoom2
-            proximoObjetivo_y = mi_Asilo.yRoom2
-        elif (choice==4):
-            proximoObjetivo_x = mi_Asilo.xRoom3
-            proximoObjetivo_y = mi_Asilo.yRoom3
-        elif (choice==5):
-            proximoObjetivo_x = mi_Asilo.xRoom4
-            proximoObjetivo_y = mi_Asilo.yRoom4
-        elif (choice==6):
-            proximoObjetivo_x = mi_Asilo.xGarden
-            proximoObjetivo_y = mi_Asilo.yGarden
-        elif (choice==7):
-            proximoObjetivo_x = mi_Asilo.xDinRoom
-            proximoObjetivo_y = mi_Asilo.yDinRoom
-        elif (choice==8):
-            sys.exit()
+        print("Creando nuevo recorrido 1...")
 
-        mi_Robot.ve_a_habitacion(proximoObjetivo_x, proximoObjetivo_y)
+        nuevoRecorrido1 = Recorrido(mi_Asilo.xRoom1, mi_Asilo.yRoom1, hora_elegida, minutos_elegidos)
 
-        mi_Robot.clienteAccionBase.wait_for_result(rospy.Duration(60))
+        funcion_nuevo_recorrido(nuevoRecorrido1, nombreTemp)
 
-        if(mi_Robot.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
-            rospy.loginfo("You have reached the destination")
-            mi_Robot.decir_hola_hora_medicina()
-        else:
-            rospy.loginfo("The robot failed to reach the destination")
-
+        print("aca ando")
 
