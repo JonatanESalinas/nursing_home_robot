@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>InterfazViva</class>
+ <widget class="QDialog" name="InterfazViva">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1091</width>
-    <height>851</height>
+    <width>1102</width>
+    <height>853</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -327,7 +327,7 @@ p, li { white-space: pre-wrap; }
     <attribute name="title">
      <string>Resumen del día</string>
     </attribute>
-    <widget class="QTableView" name="tableView_3">
+    <widget class="QTableView" name="TablaResumen">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -343,3 +343,4 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
 </ui>
+
