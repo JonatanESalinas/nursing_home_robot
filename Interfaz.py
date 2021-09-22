@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(1091, 851)
-        self.Vistas = QtWidgets.QTabWidget(Dialog)
+class Ui_InterfazViva(object):
+    def setupUi(self, InterfazViva):
+        InterfazViva.setObjectName("InterfazViva")
+        InterfazViva.resize(1102, 853)
+        self.Vistas = QtWidgets.QTabWidget(InterfazViva)
         self.Vistas.setGeometry(QtCore.QRect(0, 0, 1101, 851))
         font = QtGui.QFont()
         font.setPointSize(20)
@@ -105,45 +105,46 @@ class Ui_Dialog(object):
         self.Vistas.addTab(self.SignosVitales, "")
         self.Resumen = QtWidgets.QWidget()
         self.Resumen.setObjectName("Resumen")
-        self.tableView_3 = QtWidgets.QTableView(self.Resumen)
-        self.tableView_3.setGeometry(QtCore.QRect(20, 20, 1041, 761))
-        self.tableView_3.setObjectName("tableView_3")
+        self.TablaResumen = QtWidgets.QTableView(self.Resumen)
+        self.TablaResumen.setGeometry(QtCore.QRect(20, 20, 1041, 761))
+        self.TablaResumen.setObjectName("TablaResumen")
         self.Vistas.addTab(self.Resumen, "")
 
-        self.retranslateUi(Dialog)
+        self.retranslateUi(InterfazViva)
         self.Vistas.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(InterfazViva)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, InterfazViva):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        InterfazViva.setWindowTitle(_translate("InterfazViva", "Dialog"))
+        self.textBrowser.setHtml(_translate("InterfazViva", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Modern\'; font-size:20pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:48pt;\">Residencia VivAlma</span></p></body></html>"))
-        self.lineEdit.setText(_translate("Dialog", "Usuario:"))
-        self.lineEdit_2.setText(_translate("Dialog", "Password:"))
-        self.IniciarSesion.setText(_translate("Dialog", "Iniciar Sesión"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Inicio), _translate("Dialog", "Inicio"))
-        self.lineEdit_6.setText(_translate("Dialog", "Hora:"))
-        self.NuevoRegistroHora.setText(_translate("Dialog", "NUEVO REGISTRO"))
-        self.GuardarHoras.setText(_translate("Dialog", "GUARDAR"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Horarios), _translate("Dialog", "Horario del día"))
-        self.lineEdit_3.setText(_translate("Dialog", "Temperatura:"))
-        self.lineEdit_4.setText(_translate("Dialog", "Presión:"))
-        self.lineEdit_5.setText(_translate("Dialog", "SpO2:"))
-        self.GuardarSignosVitales.setText(_translate("Dialog", "GUARDAR"))
-        self.NuevoRegistroSignosVitales.setText(_translate("Dialog", "NUEVO REGISTRO"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.SignosVitales), _translate("Dialog", "Signos Vitales"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Resumen), _translate("Dialog", "Resumen del día"))
+        self.lineEdit.setText(_translate("InterfazViva", "Usuario:"))
+        self.lineEdit_2.setText(_translate("InterfazViva", "Password:"))
+        self.IniciarSesion.setText(_translate("InterfazViva", "Iniciar Sesión"))
+        self.Vistas.setTabText(self.Vistas.indexOf(self.Inicio), _translate("InterfazViva", "Inicio"))
+        self.lineEdit_6.setText(_translate("InterfazViva", "Hora:"))
+        self.NuevoRegistroHora.setText(_translate("InterfazViva", "NUEVO REGISTRO"))
+        self.GuardarHoras.setText(_translate("InterfazViva", "GUARDAR"))
+        self.Vistas.setTabText(self.Vistas.indexOf(self.Horarios), _translate("InterfazViva", "Horario del día"))
+        self.lineEdit_3.setText(_translate("InterfazViva", "Temperatura:"))
+        self.lineEdit_4.setText(_translate("InterfazViva", "Presión:"))
+        self.lineEdit_5.setText(_translate("InterfazViva", "SpO2:"))
+        self.GuardarSignosVitales.setText(_translate("InterfazViva", "GUARDAR"))
+        self.NuevoRegistroSignosVitales.setText(_translate("InterfazViva", "NUEVO REGISTRO"))
+        self.Vistas.setTabText(self.Vistas.indexOf(self.SignosVitales), _translate("InterfazViva", "Signos Vitales"))
+        self.Vistas.setTabText(self.Vistas.indexOf(self.Resumen), _translate("InterfazViva", "Resumen del día"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    InterfazViva = QtWidgets.QDialog()
+    ui = Ui_InterfazViva()
+    ui.setupUi(InterfazViva)
+    InterfazViva.show()
     sys.exit(app.exec_())
+
