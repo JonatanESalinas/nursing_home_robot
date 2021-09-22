@@ -1,150 +1,794 @@
-# -*- coding: utf-8 -*-
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InterfazViva</class>
+ <widget class="QDialog" name="InterfazViva">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1102</width>
+    <height>853</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTabWidget" name="Vistas">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1101</width>
+     <height>851</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="Inicio">
+    <attribute name="title">
+     <string>Inicio</string>
+    </attribute>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>20</y>
+       <width>931</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Modern</family>
+      </font>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Modern'; font-size:20pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:48pt;&quot;&gt;Residencia VivAlma&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>420</y>
+       <width>55</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="EntradaUsuario">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>280</y>
+       <width>731</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>220</y>
+       <width>141</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Usuario:</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="EntradaContra">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>420</y>
+       <width>731</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>360</y>
+       <width>271</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Password:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="IniciarSesion">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>500</y>
+       <width>311</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Iniciar Sesión</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Horarios">
+    <attribute name="title">
+     <string>Horario del día</string>
+    </attribute>
+    <widget class="QTableView" name="TablaHorarios">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>130</y>
+       <width>621</width>
+       <height>631</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_6">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>260</y>
+       <width>221</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Hora:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="NombresPacientes">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>621</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Omar Perez</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ricardo Flores</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jacobo Sanchez</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="GuardarHoras">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>610</y>
+       <width>251</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GUARDAR</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_7">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>420</y>
+       <width>221</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Minutos:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="HorasComoBox">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>310</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>00</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>01</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>02</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>03</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>04</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>05</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>06</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>07</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>08</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>09</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>11</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>12</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>13</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>14</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>15</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>17</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>18</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>19</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>20</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>22</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>23</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="MinutosComoBox">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>470</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>00</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>01</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>02</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>03</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>04</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>05</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>06</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>07</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>08</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>09</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>11</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>12</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>13</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>14</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>15</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>17</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>18</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>19</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>20</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>21</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>22</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>23</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>24</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>25</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>26</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>27</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>28</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>29</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>31</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>33</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>34</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>35</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>36</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>37</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>38</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>39</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>40</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>41</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>42</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>43</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>44</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>45</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>46</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>47</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>48</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>49</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>51</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>52</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>53</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>54</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>55</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>56</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>57</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>58</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>59</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="SignosVitales">
+    <attribute name="title">
+     <string>Signos Vitales</string>
+    </attribute>
+    <widget class="QTableView" name="TablaSignosVitales">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>110</y>
+       <width>561</width>
+       <height>611</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>110</y>
+       <width>221</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Temperatura:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_4">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>270</y>
+       <width>221</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Presión:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_5">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>450</y>
+       <width>221</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>SpO2:</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="EntradaTemperatura">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>160</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="PresionEntrada">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>320</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="Oxigenacion">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>500</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GuardarSignosVitales">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>590</y>
+       <width>251</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GUARDAR</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="NombresPacientes_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>561</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Omar Perez</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ricardo Flores</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Jacobo Sanchez</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Resumen">
+    <attribute name="title">
+     <string>Resumen del día</string>
+    </attribute>
+    <widget class="QTableView" name="TablaResumen">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>1041</width>
+       <height>761</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
 
-# Form implementation generated from reading ui file 'Pastillero.ui'
-#
-# Created by: PyQt5 UI code generator 5.15.4
-#
-# WARNING: Any manual changes made to this file will be lost when pyuic5 is
-# run again.  Do not edit this file unless you know what you are doing.
-
-
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-
-class Ui_InterfazViva(object):
-    def setupUi(self, InterfazViva):
-        InterfazViva.setObjectName("InterfazViva")
-        InterfazViva.resize(1102, 853)
-        self.Vistas = QtWidgets.QTabWidget(InterfazViva)
-        self.Vistas.setGeometry(QtCore.QRect(0, 0, 1101, 851))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.Vistas.setFont(font)
-        self.Vistas.setObjectName("Vistas")
-        self.Inicio = QtWidgets.QWidget()
-        self.Inicio.setObjectName("Inicio")
-        self.textBrowser = QtWidgets.QTextBrowser(self.Inicio)
-        self.textBrowser.setGeometry(QtCore.QRect(70, 20, 931, 111))
-        font = QtGui.QFont()
-        font.setFamily("Modern")
-        self.textBrowser.setFont(font)
-        self.textBrowser.setObjectName("textBrowser")
-        self.label = QtWidgets.QLabel(self.Inicio)
-        self.label.setGeometry(QtCore.QRect(250, 420, 55, 16))
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.EntradaUsuario = QtWidgets.QPlainTextEdit(self.Inicio)
-        self.EntradaUsuario.setGeometry(QtCore.QRect(160, 280, 731, 61))
-        self.EntradaUsuario.setObjectName("EntradaUsuario")
-        self.lineEdit = QtWidgets.QLineEdit(self.Inicio)
-        self.lineEdit.setGeometry(QtCore.QRect(160, 220, 141, 61))
-        self.lineEdit.setObjectName("lineEdit")
-        self.EntradaContra = QtWidgets.QPlainTextEdit(self.Inicio)
-        self.EntradaContra.setGeometry(QtCore.QRect(160, 420, 731, 61))
-        self.EntradaContra.setObjectName("EntradaContra")
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.Inicio)
-        self.lineEdit_2.setGeometry(QtCore.QRect(160, 360, 271, 61))
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.IniciarSesion = QtWidgets.QPushButton(self.Inicio)
-        self.IniciarSesion.setGeometry(QtCore.QRect(380, 500, 311, 61))
-        self.IniciarSesion.setObjectName("IniciarSesion")
-        self.Vistas.addTab(self.Inicio, "")
-        self.Horarios = QtWidgets.QWidget()
-        self.Horarios.setObjectName("Horarios")
-        self.TablaHorarios = QtWidgets.QTableView(self.Horarios)
-        self.TablaHorarios.setGeometry(QtCore.QRect(40, 130, 621, 631))
-        self.TablaHorarios.setObjectName("TablaHorarios")
-        self.EntradaHoras = QtWidgets.QPlainTextEdit(self.Horarios)
-        self.EntradaHoras.setGeometry(QtCore.QRect(700, 310, 381, 61))
-        self.EntradaHoras.setObjectName("EntradaHoras")
-        self.lineEdit_6 = QtWidgets.QLineEdit(self.Horarios)
-        self.lineEdit_6.setGeometry(QtCore.QRect(700, 260, 221, 51))
-        self.lineEdit_6.setObjectName("lineEdit_6")
-        self.NuevoRegistroHora = QtWidgets.QPushButton(self.Horarios)
-        self.NuevoRegistroHora.setGeometry(QtCore.QRect(730, 30, 301, 71))
-        self.NuevoRegistroHora.setObjectName("NuevoRegistroHora")
-        self.NombresPacientes = QtWidgets.QComboBox(self.Horarios)
-        self.NombresPacientes.setGeometry(QtCore.QRect(40, 30, 621, 71))
-        self.NombresPacientes.setObjectName("NombresPacientes")
-        self.GuardarHoras = QtWidgets.QPushButton(self.Horarios)
-        self.GuardarHoras.setGeometry(QtCore.QRect(750, 400, 251, 81))
-        self.GuardarHoras.setObjectName("GuardarHoras")
-        self.Vistas.addTab(self.Horarios, "")
-        self.SignosVitales = QtWidgets.QWidget()
-        self.SignosVitales.setObjectName("SignosVitales")
-        self.TablaSignosVitales = QtWidgets.QTableView(self.SignosVitales)
-        self.TablaSignosVitales.setGeometry(QtCore.QRect(50, 110, 561, 611))
-        self.TablaSignosVitales.setObjectName("TablaSignosVitales")
-        self.PacientesSignosVitales = QtWidgets.QComboBox(self.SignosVitales)
-        self.PacientesSignosVitales.setGeometry(QtCore.QRect(50, 10, 561, 71))
-        self.PacientesSignosVitales.setObjectName("PacientesSignosVitales")
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.SignosVitales)
-        self.lineEdit_3.setGeometry(QtCore.QRect(680, 110, 221, 51))
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.SignosVitales)
-        self.lineEdit_4.setGeometry(QtCore.QRect(680, 270, 221, 51))
-        self.lineEdit_4.setObjectName("lineEdit_4")
-        self.lineEdit_5 = QtWidgets.QLineEdit(self.SignosVitales)
-        self.lineEdit_5.setGeometry(QtCore.QRect(680, 450, 221, 51))
-        self.lineEdit_5.setObjectName("lineEdit_5")
-        self.EntradaTemperatura = QtWidgets.QPlainTextEdit(self.SignosVitales)
-        self.EntradaTemperatura.setGeometry(QtCore.QRect(680, 160, 381, 61))
-        self.EntradaTemperatura.setObjectName("EntradaTemperatura")
-        self.PresionEntrada = QtWidgets.QPlainTextEdit(self.SignosVitales)
-        self.PresionEntrada.setGeometry(QtCore.QRect(680, 320, 381, 61))
-        self.PresionEntrada.setObjectName("PresionEntrada")
-        self.Oxigenacion = QtWidgets.QPlainTextEdit(self.SignosVitales)
-        self.Oxigenacion.setGeometry(QtCore.QRect(680, 500, 381, 61))
-        self.Oxigenacion.setObjectName("Oxigenacion")
-        self.GuardarSignosVitales = QtWidgets.QPushButton(self.SignosVitales)
-        self.GuardarSignosVitales.setGeometry(QtCore.QRect(750, 590, 251, 81))
-        self.GuardarSignosVitales.setObjectName("GuardarSignosVitales")
-        self.NuevoRegistroSignosVitales = QtWidgets.QPushButton(self.SignosVitales)
-        self.NuevoRegistroSignosVitales.setGeometry(QtCore.QRect(720, 10, 301, 71))
-        self.NuevoRegistroSignosVitales.setObjectName("NuevoRegistroSignosVitales")
-        self.Vistas.addTab(self.SignosVitales, "")
-        self.Resumen = QtWidgets.QWidget()
-        self.Resumen.setObjectName("Resumen")
-        self.TablaResumen = QtWidgets.QTableView(self.Resumen)
-        self.TablaResumen.setGeometry(QtCore.QRect(20, 20, 1041, 761))
-        self.TablaResumen.setObjectName("TablaResumen")
-        self.Vistas.addTab(self.Resumen, "")
-
-        self.retranslateUi(InterfazViva)
-        self.Vistas.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(InterfazViva)
-
-    def retranslateUi(self, InterfazViva):
-        _translate = QtCore.QCoreApplication.translate
-        InterfazViva.setWindowTitle(_translate("InterfazViva", "Dialog"))
-        self.textBrowser.setHtml(_translate("InterfazViva", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Modern\'; font-size:20pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:48pt;\">Residencia VivAlma</span></p></body></html>"))
-        self.lineEdit.setText(_translate("InterfazViva", "Usuario:"))
-        self.lineEdit_2.setText(_translate("InterfazViva", "Password:"))
-        self.IniciarSesion.setText(_translate("InterfazViva", "Iniciar Sesión"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Inicio), _translate("InterfazViva", "Inicio"))
-        self.lineEdit_6.setText(_translate("InterfazViva", "Hora:"))
-        self.NuevoRegistroHora.setText(_translate("InterfazViva", "NUEVO REGISTRO"))
-        self.GuardarHoras.setText(_translate("InterfazViva", "GUARDAR"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Horarios), _translate("InterfazViva", "Horario del día"))
-        self.lineEdit_3.setText(_translate("InterfazViva", "Temperatura:"))
-        self.lineEdit_4.setText(_translate("InterfazViva", "Presión:"))
-        self.lineEdit_5.setText(_translate("InterfazViva", "SpO2:"))
-        self.GuardarSignosVitales.setText(_translate("InterfazViva", "GUARDAR"))
-        self.NuevoRegistroSignosVitales.setText(_translate("InterfazViva", "NUEVO REGISTRO"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.SignosVitales), _translate("InterfazViva", "Signos Vitales"))
-        self.Vistas.setTabText(self.Vistas.indexOf(self.Resumen), _translate("InterfazViva", "Resumen del día"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    InterfazViva = QtWidgets.QDialog()
-    ui = Ui_InterfazViva()
-    ui.setupUi(InterfazViva)
-    InterfazViva.show()
-    sys.exit(app.exec_())
 
