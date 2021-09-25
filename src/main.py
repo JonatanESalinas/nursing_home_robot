@@ -3,7 +3,7 @@
    Para correr la simulacion:
         Terminal 1:
             roslaunch nursing_home_robot nursing_robot_simulation.launch
-        Terminal 2 (correr en el folder nursing_home_robot/src/ ):
+        Terminal 2 (correr en el folder nursing_home_robot/src/ )!!!!!!!!!!!!:
             rosrun nursing_home_robot main.py
         Terminal 3:
             roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch

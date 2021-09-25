@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
     Para correr toda la interfaz:
         python MainPastillero.py
@@ -7,17 +8,22 @@
         pyrcc5 Imag.qrc -o Imag_rc.py
 '''
 
-import os
-import datetime
-import sys
+#import os
+#import datetime
+#import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QTableWidgetItem
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 #import numpy as np
 #import requests
 from Pastillero import *
-from recorrido import Recorrido
+
+import rospy
+#import actionlib
+from actionlib_msgs.msg import *
 from asilo import Asilo
+from robot import Robot
+from recorrido import Recorrido
 import threading
 
 myAPI = ""#MATLAB
@@ -70,7 +76,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         personaDelRecorrido = self.buscaAHabitante(nombreSeleccionado)
 
                             #MODIFICAR: PONER LAS COORDENADAS EN LA CLASE PERSONA
-        nuevoRecorrido = Recorrido(mi_Asilo.xRoom1, mi_Asilo.yRoom1, hora_elegida, minutos_elegidos)
+        nuevoRecorrido = Recorrido(personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos)
         #mi_Asilo.myArrayRecorridos.append(nuevoRecorrido)          #LO GUARDO EN UN ARREGLO DE RECORRIDOS???
             
         renglonPos = self.tablaRecorridos.rowCount()
@@ -85,13 +91,13 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         print("Minutos: " + str(minutos_elegidos))
 
         #Habilitar esta linea para crear como tal el hilo!!!!!!!!!!
-        #self.funcion_nuevo_recorrido(nuevoRecorrido, nombre_hilo)
+        self.funcion_nuevo_recorrido(nuevoRecorrido, nombre_hilo)
 
-    '''#Descomentar esta funcion para habilitar la funcion de los hilos
-    def funcion_nuevo_recorrido(unRecorrido, nombre_recorrido):
+    #Descomentar esta funcion para habilitar la funcion de los hilos
+    def funcion_nuevo_recorrido(self, unRecorrido, nombre_recorrido):
         hilo_pendiente_de_la_hora = threading.Thread(target= mi_Robot.checa_la_hora, args=(unRecorrido,), name=nombre_recorrido)
         hilo_pendiente_de_la_hora.start()
-    ''' 
+     
     def buscaAHabitante(self, nombre_a_buscar):
         for i in range(0, len(mi_Asilo.habitantes_lista)):
             if mi_Asilo.habitantes_lista[i].Nombre == nombre_a_buscar:
@@ -103,7 +109,11 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
 
 if __name__ == "__main__":
 
+    rospy.loginfo("Iniciando nodo MainPastillero con GUI...")
+    rospy.init_node('nodo_main')
+
     mi_Asilo = Asilo()
+    mi_Robot = Robot()
 
     app = QtWidgets.QApplication([])
     ui = Ui_InterfazViva()

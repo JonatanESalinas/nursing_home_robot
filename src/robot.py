@@ -17,6 +17,10 @@ class Robot:
         self.clienteAccionBase.wait_for_server()
         rospy.loginfo("Action server move_base identificado y listo.")
 
+        self.xBase = -6.5530	
+        self.yBase = 3.5
+        self.my_rate = rospy.Rate(1)
+
     def ve_a_habitacion(self, coordenada_x, coordenada_y):
         goal = MoveBaseGoal()
 
@@ -61,26 +65,47 @@ class Robot:
                     print("El robot debe ir a su destino ahora. X: " + str(mi_recorrido.habitacion_X) + " Y: " + str(mi_recorrido.habitacion_Y))
                     es_la_hora = True       #esto parece que se tiene que borrar despues!!!
 
-                    self.ve_a_habitacion(mi_recorrido.habitacion_X, mi_recorrido.habitacion_Y)
+                    llegue_bien_a_habitacion = False
 
-                    self.clienteAccionBase.wait_for_result(rospy.Duration(60))
-
-                    if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
-                        rospy.loginfo("You have reached the destination")
-                        self.decir_hola_hora_medicina()
-
-                        #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
-
-                            #Se hace todo el proceso de autenticacion, entrega de medicina
-
-                        #Se avisa a la Rasp del turtlebot que ya acabo el proceso
-                        #EL robot debe ir de regreso a su base.                   
-
-
-                    else:
-                        rospy.loginfo("The robot failed to reach the destination")
+                    while(llegue_bien_a_habitacion == False):
+                        self.ve_a_habitacion(mi_recorrido.habitacion_X, mi_recorrido.habitacion_Y)
                         
-            time.sleep(1)
+                        self.clienteAccionBase.wait_for_result(rospy.Duration(120))
+
+                        if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
+                            rospy.loginfo("You have reached the destination (room)")
+                            llegue_bien_a_habitacion = True
+                        else:
+                            rospy.loginfo("The robot failed to reach the destination (room), trying again...")
+
+                    self.decir_hola_hora_medicina()
+
+                    rospy.loginfo("Hey Arduino! Ya llegue. [Aqui va el serial con el Arduino]")
+                    #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
+
+                        #Se hace todo el proceso de autenticacion, entrega de medicina
+                    rospy.sleep(5)
+                    #Se avisa a la Rasp del turtlebot que ya acabo el proceso
+                    rospy.loginfo("Termine. Voy a la base")  
+
+                    self.decir_gracias_hasta_luego()
+                    self.decir_tenga_buen_dia()
+
+                    llegue_bien_a_base = False
+
+                    while(llegue_bien_a_base == False):
+                        self.ve_a_habitacion(self.xBase, self.yBase)
+                        
+                        self.clienteAccionBase.wait_for_result(rospy.Duration(120))
+
+                        if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
+                            rospy.loginfo("You have reached the destination (base)")
+                            llegue_bien_a_base = True
+                        else:
+                            rospy.loginfo("The robot failed to reach the destination (base), trying again...")                                      
+
+                        
+            self.my_rate.sleep()        #Sleep for 1 sec
 
 
 if __name__ == '__main__':
