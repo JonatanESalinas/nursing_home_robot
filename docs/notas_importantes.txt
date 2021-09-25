@@ -37,4 +37,12 @@ https://dhanoopbhaskar.com/blog/2020-05-07-working-with-python-3-in-ros-kinetic-
 con rosrun, si jala el audio.
 -Siempre revisar los permisos de las files.
     
-    
+-Si sale un error como: "/usr/bin/env: ‘python\r’: No such file or directory", instalar: "sudo apt install dos2unix"
+y luego convertir el archivo de python a formato unix. Hay un problema entre caracteres de windows y unix.
+https://askubuntu.com/questions/896860/usr-bin-env-python3-r-no-such-file-or-directory
+luego, convertir todos los archivos con: dos2unix test.py 
+
+
+OJO!!! Con lo de la voz!!!
+-Paquete util para eso: http://wiki.ros.org/tts
+-Ejemplo: https://github.com/amazon-archives/aws-robomaker-sample-application-voiceinteraction 
