@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="Inicio">
     <attribute name="title">
@@ -700,16 +700,6 @@ p, li { white-space: pre-wrap; }
     <attribute name="title">
      <string>Signos Vitales</string>
     </attribute>
-    <widget class="QTableView" name="TablaSignosVitales">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>110</y>
-       <width>561</width>
-       <height>611</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="lineEdit_3">
      <property name="geometry">
       <rect>
@@ -816,6 +806,64 @@ p, li { white-space: pre-wrap; }
        <string>Jacobo Sanchez</string>
       </property>
      </item>
+    </widget>
+    <widget class="QTableWidget" name="tablaSignosVitales">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>621</width>
+       <height>651</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Temperatura</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Oxigenación</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Presión</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+     </column>
     </widget>
    </widget>
    <widget class="QWidget" name="Resumen">

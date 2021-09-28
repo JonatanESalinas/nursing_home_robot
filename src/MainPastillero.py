@@ -16,40 +16,37 @@
         pyrcc5 Imag.qrc -o Imag_rc.py
 '''
 
-#import os
-#import datetime
-#import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QTableWidgetItem
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
-#import numpy as np
-#import requests
+import requests
 from Pastillero import *
 
 import rospy
-#import actionlib
 from actionlib_msgs.msg import *
 from asilo import Asilo
 from robot import Robot
 from recorrido import Recorrido
 import threading
 
-myAPI = ""#MATLAB
 Usuario='A01329786'
 Contra='Password'
+anterior=1
 
 class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
     def __init__(self, *args, **kwargs):
         QtWidgets.QApplication.__init__(self, *args, **kwargs)
         self.setupUi(self)
         #------------------------------------------------------------------------
+        self.datos= []
         #Disable Tab
-        self.Vistas.setTabEnabled(1, True)     ##VOLVER A PONER EN FALSE!!!
-        self.Vistas.setTabEnabled(2, True)
-        self.Vistas.setTabEnabled(3, True)
+        self.Vistas.setTabEnabled(1, False)     ##VOLVER A PONER EN FALSE!!!
+        self.Vistas.setTabEnabled(2, False)
+        self.Vistas.setTabEnabled(3, False)
         #Click de inicio de sesion
         self.IniciarSesion.clicked.connect(self.PassaworOk)
         self.GuardarHoras.clicked.connect(self.agregaNuevoRecorrido)
+        self.GuardarSignosVitales.clicked.connect(self.seleccionPaciente)
 
     def PassaworOk(self):
         UsuarioQT = self.EntradaUsuario.toPlainText()
@@ -68,6 +65,52 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
             self.Vistas.setTabEnabled(1, True)
             self.Vistas.setTabEnabled(2, True)
             self.Vistas.setTabEnabled(3, True)
+
+    def seleccionPaciente(self):
+        nombrePaciente = self.NombresPacientes_2.currentText()
+        temperatura = self.EntradaTemperatura.toPlainText()
+        presion = self.PresionEntrada.toPlainText()
+        oxigeno = self.Oxigenacion.toPlainText()
+
+        print(nombrePaciente)
+        print(temperatura)
+        print(presion)
+        print(oxigeno)
+       #self.tablaSignosVitales.clearContents()
+        if str(nombrePaciente)=='Omar Perez':
+            self.web("PK1UENEO00MJXH4R", int(temperatura), int(oxigeno), int(presion))
+            self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),1)
+            self.agregar()
+        elif str(nombrePaciente)=='Ricardo Flores':
+            self.web("1GRO3H7UWGWXBYHQ", int(temperatura), int(oxigeno), int(presion))
+            self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),2)
+            self.agregar()
+        else:
+            self.web("XKUO9A2ENYHRFWIL", int(temperatura), int(oxigeno), int(presion))
+            self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),3)
+            self.agregar()
+
+    def inicio(self,nom,temp,pre,oxi,control):
+        global anterior
+        
+        if control==anterior:
+            self.datos.append((nom,temp,pre,oxi))
+        else:
+            anterior=control
+            self.datos=[]
+            #self.tablaSignosVitales.clearContents()
+            self.datos.append((nom,temp,pre,oxi))
+
+    def agregar(self):
+        fila =0
+        for registro in self.datos:
+            columna=0
+            self.tablaSignosVitales.insertRow(fila)
+            for elemento in registro:   
+                celda= QTableWidgetItem(elemento)
+                self.tablaSignosVitales.setItem(fila,columna,celda)
+                columna+=1
+            fila+=1       
 
     def agregaNuevoRecorrido(self):
 
@@ -108,9 +151,8 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
             if mi_Asilo.habitantes_lista[i].Nombre == nombre_a_buscar:
                 return mi_Asilo.habitantes_lista[i]
 
-	
-    def web(self,u,i,a):
-        enviar=requests.get("https://api.thingspeak.com/update?api_key=6Y2UK5ORG1Z4BLWL&field1="+ str(u)+"&field2="+ str(i)+"&field3="+ str(a))
+    def web(self,key_persona, valor_temp,valor_oxigenacion,valor_presion):
+        enviar=requests.get("https://api.thingspeak.com/update?api_key=" + key_persona + "&field1="+ str(valor_temp)+"&field2="+ str(valor_oxigenacion)+"&field3="+ str(valor_presion))
 
 if __name__ == "__main__":
 
