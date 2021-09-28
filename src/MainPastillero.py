@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 '''
-    Para correr toda la interfaz:
-        python MainPastillero.py
+   Para correr la simulacion:
+        Terminal 1:
+            roslaunch nursing_home_robot nursing_robot_simulation.launch
+        Terminal 2:
+            roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+            (Acomodar el TurtleBot y cerrar este nodo)., luego Ctrl-C y ejecutar:
+        Terminal 2 (CORRER EN EL FOLDER nursing_home_robot/src/ )!!!!!!!!!!!!:
+            rosrun nursing_home_robot MainPastillero.py
+
     Para cambiar de .ui a .py:
         pyuic5 Pastillero.ui -o Pastillero.py
     Para generar el archivo Imag_rc.py:
@@ -74,9 +82,8 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         minutos_elegidos = int(minutos_elegidos)
 
         personaDelRecorrido = self.buscaAHabitante(nombreSeleccionado)
-
-                            #MODIFICAR: PONER LAS COORDENADAS EN LA CLASE PERSONA
-        nuevoRecorrido = Recorrido(personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos)
+        
+        nuevoRecorrido = Recorrido(personaDelRecorrido.Nombre, personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos)
         #mi_Asilo.myArrayRecorridos.append(nuevoRecorrido)          #LO GUARDO EN UN ARREGLO DE RECORRIDOS???
             
         renglonPos = self.tablaRecorridos.rowCount()
@@ -90,10 +97,8 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         print("Hora: " + str(hora_elegida))
         print("Minutos: " + str(minutos_elegidos))
 
-        #Habilitar esta linea para crear como tal el hilo!!!!!!!!!!
         self.funcion_nuevo_recorrido(nuevoRecorrido, nombre_hilo)
 
-    #Descomentar esta funcion para habilitar la funcion de los hilos
     def funcion_nuevo_recorrido(self, unRecorrido, nombre_recorrido):
         hilo_pendiente_de_la_hora = threading.Thread(target= mi_Robot.checa_la_hora, args=(unRecorrido,), name=nombre_recorrido)
         hilo_pendiente_de_la_hora.start()

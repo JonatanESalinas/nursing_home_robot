@@ -7,10 +7,9 @@ from actionlib_msgs.msg import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Point
 import datetime
-import time
+#from ventanasExtra import Ui_ventanaYaEsHora
 
-class Robot:
-    
+class Robot:    
     def __init__(self):     
         self.clienteAccionBase = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
         rospy.loginfo("Esperando al action server move_base...")
@@ -63,6 +62,13 @@ class Robot:
                 if(minuto==mi_recorrido.minutos_medicina):
                     print(threading.current_thread().getName())
                     print("El robot debe ir a su destino ahora. X: " + str(mi_recorrido.habitacion_X) + " Y: " + str(mi_recorrido.habitacion_Y))
+                    '''
+                    #Estas lineas lanzan un error: No se pueden crear nuevas ventanas en un thread diferente al del main.
+                    ventana_aviso_yaEsHr = Ui_ventanaYaEsHora()
+                    ventana_aviso_yaEsHr.label_hr_YaEsHora.setText(str(hora) + ":" + str(minuto))
+                    ventana_aviso_yaEsHr.label_nombreYaEsHora.setText(mi_recorrido.persona_a_atender)
+                    ventana_aviso_yaEsHr.show()
+                    '''
                     es_la_hora = True       #esto parece que se tiene que borrar despues!!!
 
                     llegue_bien_a_habitacion = False
