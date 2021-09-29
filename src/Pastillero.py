@@ -392,13 +392,3 @@ class Ui_InterfazViva(object):
         item.setText(_translate("InterfazViva", "Oxigenación"))
         self.Vistas.setTabText(self.Vistas.indexOf(self.SignosVitales), _translate("InterfazViva", "Signos Vitales"))
         self.Vistas.setTabText(self.Vistas.indexOf(self.Resumen), _translate("InterfazViva", "Resumen del día"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    InterfazViva = QtWidgets.QDialog()
-    ui = Ui_InterfazViva()
-    ui.setupUi(InterfazViva)
-    InterfazViva.show()
-    sys.exit(app.exec_())

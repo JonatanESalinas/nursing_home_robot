@@ -842,7 +842,7 @@ p, li { white-space: pre-wrap; }
      </column>
      <column>
       <property name="text">
-       <string>Oxigenación</string>
+       <string>Presión</string>
       </property>
       <property name="font">
        <font>
@@ -854,7 +854,7 @@ p, li { white-space: pre-wrap; }
      </column>
      <column>
       <property name="text">
-       <string>Presión</string>
+       <string>Oxigenación</string>
       </property>
       <property name="font">
        <font>
