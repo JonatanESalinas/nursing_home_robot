@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 '''
+    Este main no es el principal. Este codigo solo es de prueba para la navegacion y los hilos.
+    El main principal es el MainPastillero.py
+
    Para correr la simulacion:
         Terminal 1:
             roslaunch nursing_home_robot nursing_robot_simulation.launch
-        Terminal 2 (correr en el folder nursing_home_robot/src/ ):
+        Terminal 2 (correr en el folder nursing_home_robot/src/ )!!!!!!!!!!!!:
             rosrun nursing_home_robot main.py
         Terminal 3:
             roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
