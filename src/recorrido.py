@@ -5,6 +5,3 @@ class Recorrido:
         self.habitacion_Y = coordenada_Y
         self.hora_medicina = hora
         self.minutos_medicina = minutos
-
-    #def checa_la_hora(self):
-

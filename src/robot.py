@@ -56,20 +56,12 @@ class Robot:
             hora = tiempo_ahora.hour
             minuto = tiempo_ahora.minute
             
-            #print("Hora actual: " + str(hora) + ":" + str(minuto) + " , Hora medicina: " + str(mi_recorrido.hora_medicina) + ":" + str(mi_recorrido.minutos_medicina))
-
             if (hora==mi_recorrido.hora_medicina):
                 if(minuto==mi_recorrido.minutos_medicina):
                     print(threading.current_thread().getName())
                     print("El robot debe ir a su destino ahora. X: " + str(mi_recorrido.habitacion_X) + " Y: " + str(mi_recorrido.habitacion_Y))
-                    '''
-                    #Estas lineas lanzan un error: No se pueden crear nuevas ventanas en un thread diferente al del main.
-                    ventana_aviso_yaEsHr = Ui_ventanaYaEsHora()
-                    ventana_aviso_yaEsHr.label_hr_YaEsHora.setText(str(hora) + ":" + str(minuto))
-                    ventana_aviso_yaEsHr.label_nombreYaEsHora.setText(mi_recorrido.persona_a_atender)
-                    ventana_aviso_yaEsHr.show()
-                    '''
-                    es_la_hora = True       #esto parece que se tiene que borrar despues!!!
+
+                    #es_la_hora = True       #esto parece que se tiene que borrar despues!!!
 
                     llegue_bien_a_habitacion = False
 

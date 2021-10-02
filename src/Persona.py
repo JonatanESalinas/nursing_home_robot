@@ -20,15 +20,6 @@ class Persona:
 	def __str__(self):
 		return "Habitacion: " + str(self.Habitacion) + " Nombre: " + self.Nombre + " APIKey: " + str(self.APIKey) +"Pastillero: " + str(self.Pastillero)
 
-
-	'''	def inicializar(self,Presion,Oxigenacion,Temperatura):
-		self.Nombre=Nombre
-		self.Presion=Presion
-		self.Oxigenacion= Oxigenacion
-		self.Horario=Horario
-		self.Temperatura= Temperatura
-		self.Habitacion=Habitacion
-		self.Habitacion=Habitacion'''
 	
 	@property
 	def temperaturaAlta(self,valorTemp):

@@ -3,7 +3,7 @@ from Persona import Persona
 class Asilo:
     def __init__(self):
 
-        #PONER AQUI UNA LISTA DE PERSONAS HABITANTES DEL ASILO?
+        #Lista de habitantes de asilo
         self.habitantes_lista = list()
 
         #Agregar una lista de recorridos?
@@ -27,9 +27,7 @@ class Asilo:
 
         self.llena_habitantes()
 
-        #self.mapa = "map"
-
     def llena_habitantes(self):
         self.habitantes_lista.append(Persona("Omar Perez", 1, "PK1UENEO00MJXH4R", 1, self.xRoom1, self.yRoom1))
-        self.habitantes_lista.append(Persona("Ricardo Flores", 2, "1GRO3H7UWGWXBYHQ", 2, self.xRoom2, self.yRoom2))        #RELLENAR CON LAS API KEYS DE VERDAD!!!!
+        self.habitantes_lista.append(Persona("Ricardo Flores", 2, "1GRO3H7UWGWXBYHQ", 2, self.xRoom2, self.yRoom2))   
         self.habitantes_lista.append(Persona("Jacobo Sanchez", 3, "XKUO9A2ENYHRFWIL", 3, self.xRoom3, self.yRoom3))

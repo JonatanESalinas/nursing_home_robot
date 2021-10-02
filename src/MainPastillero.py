@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 '''
+    Este es el Main principal, que corre la interfaz y el codigo de navegacion.
+
    Para correr la simulacion:
         Terminal 1:
             roslaunch nursing_home_robot nursing_robot_simulation.launch
@@ -40,7 +42,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         #------------------------------------------------------------------------
         self.datos= []
         #Disable Tab
-        self.Vistas.setTabEnabled(1, False)     ##VOLVER A PONER EN FALSE!!!
+        self.Vistas.setTabEnabled(1, False)   
         self.Vistas.setTabEnabled(2, False)
         self.Vistas.setTabEnabled(3, False)
         #Click de inicio de sesion
