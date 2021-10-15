@@ -7,6 +7,7 @@ from actionlib_msgs.msg import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Point
 import datetime
+import serial,time
 #from ventanasExtra import Ui_ventanaYaEsHora
 
 class Robot:    
@@ -81,11 +82,38 @@ class Robot:
                     rospy.loginfo("Hey Arduino! Ya llegue. [Aqui va el serial con el Arduino]")
                     #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
 
-                        #Se hace todo el proceso de autenticacion, entrega de medicina
-                    rospy.sleep(5)
+                    #Se hace todo el proceso de autenticacion, entrega de medicina
+                    print('Running. Press CTRL-C to exit.')
+                    with serial.Serial("/dev/ttyUSB1", 9600, timeout=1) as arduino:
+                        time.sleep(0.1) #wait for serial to open
+                        if arduino.isOpen():
+                            print("{} connected!".format(arduino.port))
+                            try:
+                                while True:
+                                    cmd=raw_input("Enter command : ")
+                                    arduino.write(cmd.encode())
+                                    while arduino.inWaiting()==0: pass
+                                    if arduino.inWaiting()>0:
+                                        #print "hola"
+                                        while True:
+                                            answer=arduino.readline()
+                                            print "recibi respuesta"
+                                            if answer =='L':
+                                                print "recibi la L"
+                                                break
+                                        print answer
+
+                                    #if  arduino.inWaiting()>0:
+                                        #while(arduino.readline()!='L'):
+                                            #answer =  "N"
+                                            #print answer
+                                            #break
+
+                                        arduino.flushInput() #remove data after reading
+                            except KeyboardInterrupt:
+                                print("KeyboardInterrupt has been caught.")
                     #Se avisa a la Rasp del turtlebot que ya acabo el proceso
                     rospy.loginfo("Termine. Voy a la base")  
-
                     self.decir_gracias_hasta_luego()
                     self.decir_tenga_buen_dia()
 
