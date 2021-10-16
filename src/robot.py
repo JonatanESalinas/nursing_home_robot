@@ -7,8 +7,9 @@ from actionlib_msgs.msg import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Point
 import datetime
-import serial,time
-#from ventanasExtra import Ui_ventanaYaEsHora
+#import serial, time
+from std_srvs.srv import Trigger, TriggerRequest, TriggerResponse
+from std_msgs.msg import String
 
 class Robot:    
     def __init__(self):     
@@ -17,8 +18,25 @@ class Robot:
         self.clienteAccionBase.wait_for_server()
         rospy.loginfo("Action server move_base identificado y listo.")
 
-        self.xBase = -6.5530	
+        self.pub_pastillero = rospy.Publisher('/Pastillero', String, queue_size=1)
+        self.myRatePastillero = rospy.Rate(2)
+
+        #creation of the service client connection
+        rospy.loginfo("Esperando al habitacion service server...")
+        rospy.wait_for_service('/habitacion_service_server')
+        rospy.loginfo("Habitacion service server hallado")
+        self.conexionCliente_HabsServ = rospy.ServiceProxy('/habitacion_service_server', Trigger)
+
+        #Coordenadas de base de la casa de Gazebo (Descomentar si se estan haciendo pruebas con simulacion):
+        self.xBase = -6.5530	                   
         self.yBase = 3.5
+
+        #Coordenadas de la base de labo (Descomentar si se estan haciendo pruebas fisicas en el labo):
+        '''
+        self.xBase = 1.9	
+        self.yBase = -3.54
+        '''
+
         self.my_rate = rospy.Rate(1)
 
     def ve_a_habitacion(self, coordenada_x, coordenada_y):
@@ -37,7 +55,7 @@ class Robot:
         rospy.loginfo("")
         self.clienteAccionBase.send_goal(goal)
 
-    def decir_hola_hora_medicina(self):
+    def decir_hola_hora_medicina(self):                     #Estas funciones se pueden eliminar, pues ya estan en el servicio**
         os.system("mpg321 ../voice/medicina_only.mp3")
 
     def decir_tenga_buen_dia(self):
@@ -45,6 +63,17 @@ class Robot:
 
     def decir_gracias_hasta_luego(self):
         os.system("mpg321 ../voice/gracias_hasta_luego.mp3")
+
+    def publicaNumero_pastillero(self, num_pastillero):
+        bandera = False
+
+        while not bandera:
+            connections = self.pub_pastillero.get_num_connections()
+            if connections > 0:
+                self.pub_pastillero.publish(num_pastillero)
+                bandera = True
+            else:
+                self.myRatePastillero.sleep()
 
     def checa_la_hora(self, mi_recorrido):
         es_la_hora = False
@@ -77,45 +106,25 @@ class Robot:
                         else:
                             rospy.loginfo("The robot failed to reach the destination (room), trying again...")
 
-                    self.decir_hola_hora_medicina()
-
                     rospy.loginfo("Hey Arduino! Ya llegue. [Aqui va el serial con el Arduino]")
                     #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
 
-                    #Se hace todo el proceso de autenticacion, entrega de medicina
-                    print('Running. Press CTRL-C to exit.')
-                    with serial.Serial("/dev/ttyUSB1", 9600, timeout=1) as arduino:
-                        time.sleep(0.1) #wait for serial to open
-                        if arduino.isOpen():
-                            print("{} connected!".format(arduino.port))
-                            try:
-                                while True:
-                                    cmd=raw_input("Enter command : ")
-                                    arduino.write(cmd.encode())
-                                    while arduino.inWaiting()==0: pass
-                                    if arduino.inWaiting()>0:
-                                        #print "hola"
-                                        while True:
-                                            answer=arduino.readline()
-                                            print "recibi respuesta"
-                                            if answer =='L':
-                                                print "recibi la L"
-                                                break
-                                        print answer
+                    #Se crea el ROS msg de tipo String
+                    myString_pastillero = String()
+                    print("*****se supone que pastillero es: " + str(mi_recorrido.un_pastillero))
+                    myString_pastillero.data = str(mi_recorrido.un_pastillero)
 
-                                    #if  arduino.inWaiting()>0:
-                                        #while(arduino.readline()!='L'):
-                                            #answer =  "N"
-                                            #print answer
-                                            #break
+                    self.publicaNumero_pastillero(myString_pastillero)
 
-                                        arduino.flushInput() #remove data after reading
-                            except KeyboardInterrupt:
-                                print("KeyboardInterrupt has been caught.")
+                    #EL cliente llama al Servicio, para que se ejecute la rutina de la habitacion: voz + dispensacion de medicina.
+                    resServidorHab = self.conexionCliente_HabsServ(TriggerRequest())
+                    if resServidorHab.success== True:
+                        rospy.loginfo("El servicio fue dado")
+                    else:
+                        rospy.loginfo("Problemas al concretar el servicio")
+
                     #Se avisa a la Rasp del turtlebot que ya acabo el proceso
                     rospy.loginfo("Termine. Voy a la base")  
-                    self.decir_gracias_hasta_luego()
-                    self.decir_tenga_buen_dia()
 
                     llegue_bien_a_base = False
 
