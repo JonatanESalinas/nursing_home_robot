@@ -28,14 +28,15 @@ class Robot:
         self.conexionCliente_HabsServ = rospy.ServiceProxy('/habitacion_service_server', Trigger)
 
         #Coordenadas de base de la casa de Gazebo (Descomentar si se estan haciendo pruebas con simulacion):
+        '''
         self.xBase = -6.5530	                   
         self.yBase = 3.5
-
-        #Coordenadas de la base de labo (Descomentar si se estan haciendo pruebas fisicas en el labo):
         '''
+        #Coordenadas de la base de labo (Descomentar si se estan haciendo pruebas fisicas en el labo):
+        
         self.xBase = 1.9	
         self.yBase = -3.54
-        '''
+        
 
         self.my_rate = rospy.Rate(1)
 
