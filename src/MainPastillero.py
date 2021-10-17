@@ -31,7 +31,7 @@ from robot import Robot
 from recorrido import Recorrido
 import threading
 
-Usuario='A01329786'
+Usuario='Usuario'
 Contra='Password'
 anterior=1
 
@@ -128,7 +128,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
 
         personaDelRecorrido = self.buscaAHabitante(nombreSeleccionado)
         
-        nuevoRecorrido = Recorrido(personaDelRecorrido.Nombre, personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos)
+        nuevoRecorrido = Recorrido(personaDelRecorrido.Nombre, personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos, personaDelRecorrido.Pastillero)
         #mi_Asilo.myArrayRecorridos.append(nuevoRecorrido)          #LO GUARDO EN UN ARREGLO DE RECORRIDOS???
             
         renglonPos = self.tablaRecorridos.rowCount()
