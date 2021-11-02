@@ -12,6 +12,13 @@
         Terminal 2 (CORRER EN EL FOLDER nursing_home_robot/src/ )!!!!!!!!!!!!:
             rosrun nursing_home_robot MainPastillero.py
 
+    Para filtrar lo del laser scan:
+        En nursing_home_robot:
+            rosparam load my_laser_config.yaml scan_to_scan_filter_chain
+        Y luego:
+            rosrun laser_filters scan_to_scan_filter_chain
+
+
     Para cambiar de .ui a .py:
         pyuic5 Pastillero.ui -o Pastillero.py
     Para generar el archivo Imag_rc.py:
