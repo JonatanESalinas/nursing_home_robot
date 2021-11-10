@@ -31,27 +31,37 @@ class HabitacionServer(object):
 
         #Se hace todo el proceso de autenticacion, entrega de medicina
         rospy.loginfo("Aca va lo del serial...")
-        print("****Se supone que voy a mandar al arduino esto : " + self.miHabitacion.data)
+        #print("****Se supone que voy a mandar al arduino esto : " + self.miHabitacion.data)
         rospy.sleep(5)
-        '''
+        
         print('Running. Press CTRL-C to exit.')
         with serial.Serial("/dev/ttyUSB1", 9600, timeout=1) as arduino:
-            time.sleep(0.1) #wait for serial to open
+            time.sleep(5.5) #wait for serial to open
             if arduino.isOpen():
                 print("{} connected!".format(arduino.port))
+                arduino.flushInput() #remove data after reading
                 try:
                     while True:
-                        arduino.write(self.miHabitacion.data)
-                        while arduino.inWaiting()==0: pass
+                        cmd='Carlos\n'
+                        print cmd
+                        print cmd.encode('utf-8')
+                        #arduino.write("2") #self.miHabitacion.data
+                        #print(self.miHabitacion.data)
+                        #while arduino.inWaiting()==0: pass
+                        arduino.write(cmd.encode('utf-8'))
                         if arduino.inWaiting()>0:
-                            #print "hola"
+                            print "hola"
                             while True:
                                 answer=arduino.readline()
+                                print answer
+                                print "uno"
                                 print "recibi respuesta"
-                                if answer =='L':
+                                if answer =="L":
                                     print "recibi la L"
                                     break
-                            print answer
+                            break
+                            #print answer
+                            
 
                                     #if  arduino.inWaiting()>0:
                                         #while(arduino.readline()!='L'):
@@ -60,9 +70,10 @@ class HabitacionServer(object):
                                             #break
 
                             arduino.flushInput() #remove data after reading
+                            break
                 except KeyboardInterrupt:
                     print("KeyboardInterrupt has been caught.")
-        '''
+        
 
         self.decir_gracias_hasta_luego()
         self.decir_tenga_buen_dia()
