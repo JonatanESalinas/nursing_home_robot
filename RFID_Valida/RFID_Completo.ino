@@ -21,8 +21,8 @@ Servo myServo2;                       //Crear instancia del segundo servo
 Servo myServo3;                       //Crear instancia del tercer servo
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Crear instancia del MFRC522
 
-int pastillero = 1;                               //Variable para conocer en que servo(pastillero) estamos
-int pos1 = 0;
+int pastillero;                 //Variable para conocer en que servo(pastillero) estamos
+int pos1 = 0;                       //Variables de posición    
 int pos2 = 0;
 int pos3 = 0;
 byte validKey1[4] = { 0xD2, 0x35, 0x5B, 0x1B };   //Clave de salida actual
@@ -52,10 +52,22 @@ void setup() {
 }
 
 void loop() {
+  
+  Serial.flush();
   if(Serial.available()>0){
-    int pastillero = Serial.readStringUntil('\n').toInt();
-    Serial.print("Voy a abrir el pastillero ");
-    Serial.println(pastillero);
+    //int pastillero = Serial.readStringUntil('\n').toInt();
+    String nombre ="";
+    nombre += Serial.readStringUntil('\n');
+    if (nombre == "Carlos"){
+      pastillero = 1;
+    }else if (nombre =="Ximena"){
+      pastillero = 2;
+    }else if (nombre == "Jona"){
+      pastillero = 3;
+    }
+    //Serial.print("Voy a abrir el pastillero ");
+    //Serial.println(pastillero);
+      
     // Detectar tarjeta
     while(not mfrc522.PICC_IsNewCardPresent())
     {}
@@ -66,38 +78,43 @@ void loop() {
       if (isEqualArray(mfrc522.uid.uidByte, validKey1, 4)){
         Serial.println("Tarjeta valida.");
         if (pastillero==1){
-          pos1 = 90;
+          pos1 = 80;
           myServo1.write(pos1);
-          Serial.println("Pastillero 1 Abierto");
+          //Serial.println("Pastillero 1 Abierto");
         }else if (pastillero == 2 ){
-          pos2 = 90;
+          pos2 = 80;
           myServo2.write(pos2);
-          Serial.println("Pastillero 2 Abierto");
+          //Serial.println("Pastillero 2 Abierto");
         }else if (pastillero == 3){
-          pos2 = 90;
-          myServo3.write(pos2);
-          Serial.println("Pastillero 3 Abierto");
+          pos3 = 80;
+          myServo3.write(pos3);
+          //Serial.println("Pastillero 3 Abierto");
         }
-      }else
-        Serial.println("Tarjeta inválida");
+      }//else
+        //Serial.println("Tarjeta inválida");
       // Finalizar lectura actual
       mfrc522.PICC_HaltA();
     }
-    Serial.println("Between");
+    //Serial.println("Between");
     while(digitalRead(buttonPIN) == LOW){}
-    if (pastillero==1){
+    if (pastillero==1 and pos1 == 80){
       pos1 = 0;
       myServo1.write(pos1);
-      Serial.println("Pastillero 1 Cerrado");
-    }else if (pastillero == 2){
+      //Serial.println("Pastillero 1 Cerrado");
+      Serial.write("L");
+    }else if (pastillero == 2 and pos2 == 80){
       pos2 = 0;
       myServo2.write(pos2);
-      Serial.println("Pastillero 2 Cerrado");
-    }else{
+      //Serial.println("Pastillero 2 Cerrado");
+      Serial.write("L");
+    }else if (pastillero == 3 and pos3 == 80){
       pos3 = 0;
       myServo3.write(pos3);
-      Serial.println("Pastillero 3 Cerrado");
+      //Serial.println("Pastillero 3 Cerrado");
+      Serial.write("L");
+    }else{
+      Serial.println('F');
     }
-    Serial.write('L');
+    Serial.flush();
   }
 }
