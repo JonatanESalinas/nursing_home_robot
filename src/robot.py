@@ -28,8 +28,8 @@ class Robot:
         self.conexionCliente_HabsServ = rospy.ServiceProxy('/habitacion_service_server', Trigger)
 
         #Coordenadas de base de la casa de Gazebo (Descomentar si se estan haciendo pruebas con simulacion):
-        self.xBase = -6.5530	                   
-        self.yBase = 3.5
+        self.xBase = 1.27                   
+        self.yBase = -0.731
 
         #Coordenadas de la base de labo (Descomentar si se estan haciendo pruebas fisicas en el labo):
         '''
@@ -102,10 +102,10 @@ class Robot:
 
                         if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
                             rospy.loginfo("You have reached the destination (room)")
-                            llegue_bien_a_habitacion = True
+                            
                         else:
                             rospy.loginfo("The robot failed to reach the destination (room), trying again...")
-
+                        llegue_bien_a_habitacion = True
                     rospy.loginfo("Hey Arduino! Ya llegue. [Aqui va el serial con el Arduino]")
                     #Le avisa al Arduino que ya llego. Aqui iria la comunicacion serial con el Arduino
 
@@ -135,9 +135,10 @@ class Robot:
 
                         if(self.clienteAccionBase.get_state() ==  GoalStatus.SUCCEEDED):
                             rospy.loginfo("You have reached the destination (base)")
-                            llegue_bien_a_base = True
+                        
                         else:
-                            rospy.loginfo("The robot failed to reach the destination (base), trying again...")                                      
+                            rospy.loginfo("The robot failed to reach the destination (base), trying again...")        
+                        llegue_bien_a_base = True                              
 
                         
             self.my_rate.sleep()        #Sleep for 1 sec

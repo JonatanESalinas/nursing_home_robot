@@ -3,7 +3,7 @@
 
     <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
                             <!-- Sustituir aca abajo el path hacia el mapa, dependiendo la lap-->
-        <arg name="map_file" value="/home/jonasalinas/mapcasa.yaml">
+        <arg name="map_file" value="/home/carlos/mapcasa.yaml">
         </arg>
     </include>
 

@@ -7,14 +7,14 @@ class Asilo:
         self.habitantes_lista = list()
 
         #Coordenadas de la casa de Gazebo - (Descomentar si se estan haciendo pruebas con simulacion)
-        self.xBase = -6.5530	
-        self.yBase = 3.5
-        self.xRoom1 = 0.982978
-        self.yRoom1 = 3.125654
-        self.xRoom2 = 6.125654
-        self.yRoom2 = -1.5778
-        self.xRoom3 = -6.5520
-        self.yRoom3 = -1.9778
+        self.xBase = 1.27
+        self.yBase = -0.731
+        self.xRoom1 = 4.06
+        self.yRoom1 = -0.791
+        self.xRoom2 = 3.22
+        self.yRoom2 = -0.721
+        self.xRoom3 = 2.27
+        self.yRoom3 = -0.731
 
         #Coordenadas del laboratorio - (Descomentar si se estan haciendo pruebas fisicas en el labo)
         '''
