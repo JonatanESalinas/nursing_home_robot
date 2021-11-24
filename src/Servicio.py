@@ -42,7 +42,12 @@ class HabitacionServer(object):
                 arduino.flushInput() #remove data after reading
                 try:
                     while True:
-                        cmd='Carlos\n'
+                        if(self.miHabitacion.data == "1"):
+                                cmd = 'Jona\n'
+                        elif(self.miHabitacion.data == "2"):
+                                cmd='Carlos\n'
+                        elif(self.miHabitacion.data == "3"):
+                                cmd='Ximena\n'
                         print cmd
                         print cmd.encode('utf-8')
                         #arduino.write("2") #self.miHabitacion.data
