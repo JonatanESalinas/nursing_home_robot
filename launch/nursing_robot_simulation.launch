@@ -2,7 +2,7 @@
     <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
 
     <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
-                            <!-- Sustituir aca abajo el path hacia el mapa, dependiendo la lap-->
+                            <!-- Substitute here your specific path to the map of the house.-->
         <arg name="map_file" value="/home/carlos/mapcasa.yaml">
         </arg>
     </include>

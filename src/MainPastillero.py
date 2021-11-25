@@ -1,28 +1,20 @@
 #!/usr/bin/env python
 '''
-    Este es el Main principal, que corre la interfaz y el codigo de navegacion.
+    This is the main code. Running this code will execute the PillBot Graphical User Interface, with all its functionalities,
+    as schedule the robot to deliver medicine at a specific hour, or register vital signs data.
+    This code creates a new ROS node "nodo_main" too.
 
-   Para correr la simulacion:
-        Terminal 1:
-            roslaunch nursing_home_robot nursing_robot_simulation.launch
-        Terminal 2:
-            roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    Carlos Mario Bielma Avendano        A01730645  
+    Nashely Martinez Chan               A01329786
+    Jonatan Emanuel Salinas Avila       A01731815
+    Ximena Aaroni Salinas Molar         A01551723
+    Martin Octavio Garcia Garcia        A01328971
 
-            (Acomodar el TurtleBot y cerrar este nodo)., luego Ctrl-C y ejecutar:
-        Terminal 2 (CORRER EN EL FOLDER nursing_home_robot/src/ )!!!!!!!!!!!!:
-            rosrun nursing_home_robot MainPastillero.py
-
-    Para filtrar lo del laser scan:
-        En nursing_home_robot:
-            rosparam load my_laser_config.yaml scan_to_scan_filter_chain
-        Y luego:
-            rosrun laser_filters scan_to_scan_filter_chain
-
-
-    Para cambiar de .ui a .py:
-        pyuic5 Pastillero.ui -o Pastillero.py
-    Para generar el archivo Imag_rc.py:
-        pyrcc5 Imag.qrc -o Imag_rc.py
+    Courses:
+        Robotics Project
+        Embedded Systems laboratory
+    
+    November, 2021
 '''
 
 from PyQt5.QtWidgets import QApplication, QDialog, QTableWidgetItem
@@ -85,16 +77,19 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         print(temperatura)
         print(presion)
         print(oxigeno)
-       #self.tablaSignosVitales.clearContents()
+
         if str(nombrePaciente)=='Omar Perez':
+            #Substitute here your ThingSpeak API Key
             self.web("PK1UENEO00MJXH4R", int(temperatura), int(oxigeno), int(presion))
             self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),1)
             self.agregar()
         elif str(nombrePaciente)=='Ricardo Flores':
+            #Substitute here your ThingSpeak API Key
             self.web("1GRO3H7UWGWXBYHQ", int(temperatura), int(oxigeno), int(presion))
             self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),2)
             self.agregar()
         else:
+            #Substitute here your ThingSpeak API Key
             self.web("XKUO9A2ENYHRFWIL", int(temperatura), int(oxigeno), int(presion))
             self.inicio(str(nombrePaciente),str(temperatura),str(presion),str(oxigeno),3)
             self.agregar()
@@ -107,7 +102,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         else:
             anterior=control
             self.datos=[]
-            #self.tablaSignosVitales.clearContents()
+
             self.datos.append((nom,temp,pre,oxi))
 
     def agregar(self):
@@ -136,7 +131,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         personaDelRecorrido = self.buscaAHabitante(nombreSeleccionado)
         
         nuevoRecorrido = Recorrido(personaDelRecorrido.Nombre, personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos, personaDelRecorrido.Pastillero)
-        #mi_Asilo.myArrayRecorridos.append(nuevoRecorrido)          #LO GUARDO EN UN ARREGLO DE RECORRIDOS???
+
             
         renglonPos = self.tablaRecorridos.rowCount()
         self.tablaRecorridos.insertRow(renglonPos)
@@ -160,6 +155,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
             if mi_Asilo.habitantes_lista[i].Nombre == nombre_a_buscar:
                 return mi_Asilo.habitantes_lista[i]
 
+    #Function that upload vital signs data to a personalized ThingSpeak dashboard, according to the elderly person.
     def web(self,key_persona, valor_temp,valor_oxigenacion,valor_presion):
         enviar=requests.get("https://api.thingspeak.com/update?api_key=" + key_persona + "&field1="+ str(valor_temp)+"&field2="+ str(valor_oxigenacion)+"&field3="+ str(valor_presion))
 
