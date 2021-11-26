@@ -8,17 +8,17 @@ The Graphical User Interface also supports elderly person's vital signs registra
 
 This prototype was implemented using a TurtleBot3 Waffle Pi with Robot Operating System (Kinetic Kame).
 
+![robot Pillbot_rec](https://user-images.githubusercontent.com/38736789/143506593-55d2a717-c527-41ba-8f02-57c7f97bd180.jpeg)
+
 ## Why is this important? 🚀
 
 This project aims to substantially decrease the risk for the elders of missing a dose or don’t taking it as prescribed, which could possibly harm the person's health. Medication regimens for elderly people can be very complex, and medication errors are more likely to happen, which can be very dangerous. Taking the right dose of each medication at the right time will make the treatment successful.
 
 Moreover, the process of register and store person's vital signs data is digitized, which makes the whole procedure more comfortable for the caregivers, and the data can be consulted and visualized more easily.
 
-_imagen del robot_
+## Requirements NASH📋
 
-### Requirements NASH📋
-
-_The following is a list of the software requirements to run this project:_
+The following is a list of the software requirements to run this project:
 
 * [ROS Kinetic Kame](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [TurtleBot3 Packages](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
@@ -26,7 +26,7 @@ _The following is a list of the software requirements to run this project:_
 * [mpg321](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [laser_filters package](https://maven.apache.org/) - Manejador de dependencias
 
-### Software and Hardware tools NASH🛠️
+## Software and Hardware tools NASH🛠️
 
 _This is a list of other **software** that we used to build the whole application:_
 
@@ -52,121 +52,111 @@ _Others:_
 * Metal rods
 * Protoboard and cables
 
-### Previous configuration 🔧
-First of all, clone this repo in your machine.
-
-This project uses a laser filter to fiter scan readings of the robot's sensor. To implemement this, we modified two files of the turtlebot3 packages installation. Please substitute the move_base.launch and the turtlebot3_navigation.launch files located at /opt/ros/kinetic/share/turtlebot3_navigation/launch for the ones with the same name located inside the launch folder of this repo. This in order to remap the /scan readings to /scan_filtered.
-
-### Simulation 🔧
+## Simulation 🔧
 
 It is possible to run this project in a simulated environment, making use of a house model in Gazebo and the TurleBot3 Waffle simulated model. The following are the steps to run it:
 
-After doing the steps described in "Previous configuration", the simulation can be run.
-In a terminal, run the launch file to launch the simulation (Gazebo and RViz). The launch file to launch is nursing_robot_simulation.launch. Before launch it, please modify the path to the house map according to the location of the house map in your machine. In this repo, there is already a map of the Gazebo house in the maps folder: mapcasa.pgm and mapcasa.yaml. Then, launch the file using:
+In a terminal, run the launch file to launch the simulation (Gazebo and RViz). This launch file is `nursing_robot_simulation.launch`. Before launch it, please modify in this launch file the path according to the location of the house map in your machine. In this repo, there is already a map of the Gazebo house in the `maps` folder: `mapcasa.pgm` and `mapcasa.yaml`. Then, launch the file using:
 
-```
-roslaunch nursing_home_robot nursing_robot_simulation.launch
-```
+    roslaunch nursing_home_robot nursing_robot_simulation.launch
 
-After doing this, in other terminal located at /nursing_home_robot, load the next file to the parameters server:
-```
-rosparam load my_laser_config.yaml scan_to_scan_filter_chain
-```
-And run the laser filter:
-```
-rosrun laser_filters scan_to_scan_filter_chain
-```
-It is recommended to follow the steps listed here to estimate the initial pose of the robot. In other terminal, you can launch the turtlebot3_teleop_key.launch to estimate more precisely the pose:
+It is recommended to follow the steps listed [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/nav_simulation/) to estimate the initial pose of the robot. In another terminal, you can launch the `turtlebot3_teleop_key.launch` to estimate more precisely the pose:
 
-```
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-```
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 In another terminal, run the Habitacion Service server:
-```
-rosrun nursing_home_robot Servicio.py
-```
 
-Then, in other terminal located at /nursing_home_robot/src , run the main code. The GUI should appear:
-```
-rosrun nursing_home_robot MainPastillero.py
-```
+    rosrun nursing_home_robot Servicio.py
 
-    Imagen
+Then, in other terminal, run the main code. The GUI should appear:
 
-It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use "Username" as the Username and "Password" as the Password. Once you clic in the button, the different tabs of the GUI will be activated.
+    rosrun nursing_home_robot MainPastillero.py
 
-    Imagen
+![Interfaz_PillBot](https://user-images.githubusercontent.com/38736789/143507270-3d6ce94a-1934-4592-a9e7-119cdb4861b2.jpeg)
 
-## Schedules tab (Horario del dia) ⚙️
+## Running this project in a real TurtleBot3 🔩
+
+If you want to reproduce this project with a real TurtleBot3, check the hardware components used in the "Hardware" section of this README.
+
+### Previous configuration 🔧
+First of all, clone this repo in your machine.
+
+This project uses a laser filter to filter scan readings of the robot's sensor. To implemement this, we modified two files of the turtlebot3 packages installation. Please substitute the `move_base.launch` and the `turtlebot3_navigation.launch` files located at `/opt/ros/kinetic/share/turtlebot3_navigation/launch` for the ones with the same name located inside the launch folder of this repo. This in order to remap the `/scan` readings to `/scan_filtered`.
+
+### Running the project  🔧
+
+First, establish communication between the TurtleBot3 and your PC, as decribed [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup).
+
+Then, execute the instructions listed [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/bringup/#bringup) to perform the Bringup of the TurtleBot.
+
+As stated [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes) in section 5.1, launch the navigation with:
+
+    export TURTLEBOT3_MODEL=burger
+
+    roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+
+Make sure to specify the sorrect path to the map. After doing this, RViz will appear. In another terminal located at `/nursing_home_robot`, load the next file to the parameters server:
+
+    rosparam load my_laser_config.yaml scan_to_scan_filter_chain
+
+And run the laser filter:
+
+    rosrun laser_filters scan_to_scan_filter_chain
+
+It is recommended to follow the steps listed [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/nav_simulation/) to estimate the initial pose of the robot. In another terminal, you can launch the `turtlebot3_teleop_key.launch` to estimate more precisely the pose:
+
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+In the SBC of the TurtleBot3, in a terminal located at `/nursing_home_robot/src` run the Habitacion Service server:
+
+    rosrun nursing_home_robot Servicio.py
+
+Then, again in the remote PC, run the main code. The GUI should appear:
+
+    rosrun nursing_home_robot MainPastillero.py
+
+![Interfaz_PillBot](https://user-images.githubusercontent.com/38736789/143507270-3d6ce94a-1934-4592-a9e7-119cdb4861b2.jpeg)
+
+## Interface functionalities
+It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use `Username` as the Username and `Password` as the Password. Once you clic in the "Iniciar Sesion" button, the different tabs of the GUI will be activated.
+
+![Interfaz_PillBot_user](https://user-images.githubusercontent.com/38736789/143507331-b3191802-e819-4d17-858f-f16c4698868a.jpeg)
+
+### Schedules tab (Horario del dia) ⚙️
 
 In the Schedules tab ("Horario del dia" in Spanish), the nurse can program the robot to deliver medicine to a specific elderly person, at a specific hour. The nurse just need to select the elderly patient from the combo box, and specify the hour at which the robot will visit that person. When the "Guardar" button is clicked, the walk is scheduled in the robot's itinerary.
 
+![Horario_del_dia](https://user-images.githubusercontent.com/38736789/143507470-637ebb9e-223d-4f59-bce8-68d7f348430a.jpeg)
+
+
 When its time, the robot will visit the elder person's room to deliver medicine. When the robot arrives to the room, it will reproduce an audio to anounce it arrival (using mpg321).
 
-In the simulation, the authentication of the nurse using the RFID sensor and the card, and the opening of the pillbox is omitted.
+Once the robot has arrived and has said a phrase, the nurse must pass the card in front of the RFID sensor for authentication purposes. Once done, the correct pillbox will be opened, for the nurse to take the pills and give them to the elderly person. When this is finished, the nurse must push the button on the robot, to indicate that the pillbox must close. In the simulation, the authentication of the nurse using the RFID sensor and the card, and the opening of the pillbox is omitted.
 
-After visiting the elder person's room, the robot will return to its base.
+After this process, the robot will return to its base, and will wait for another scheduled time to deliver medicine.
 
-## Vital Signs tab (Signos Vitales) ⚙️
+### Vital Signs tab (Signos Vitales) ⚙️
 
 The GUI also allows to register data about elderly person's health: Temperature (°C), Oximetry (%) and Blood presure (mmHg). The nurse only need to enter the values in the interface, and when the "Guardar" button is clicked, the values will be added to a table.
 
-#  ThingSpeak ⚙️
+![signos_vitales](https://user-images.githubusercontent.com/38736789/143507544-eff83da8-2af1-4e23-92ee-5083a96c821d.jpeg)
+
+####  ThingSpeak ⚙️
 Each time a new data entry of vital signs (temperature, oxymetry and blood pressure) is made through the "Signos Vitales" tab of the GUI, these data is sent to the corresponding resident's ThingSpeak dashboard.
 
-    Imagen
+![dashboard_1](https://user-images.githubusercontent.com/38736789/143507661-5cf3eeba-43cc-4af2-8b8c-e88e5bd3f4b0.PNG)
 
 In each dashboard, there are three graphs, one for each variable mentioned above, which show the measured data vs. time. Each record shows the obtained value, and the exact time in which the data was received in the cloud. This way, the family members of the resident, who can access the dashboard, can monitor their loved one's health in real time.
 
-You can create your own ThingSpeak account clicking here. Substitute your dashboard API Key for an elderly person, in MainPastillero.py:
+![dashboard_2](https://user-images.githubusercontent.com/38736789/143507684-841f70e8-ec09-4327-807e-a6dc45317dbf.png)
 
-```
+You can create your own ThingSpeak account clicking [here](https://thingspeak.com). Substitute your dashboard API Key for an elderly person, in `MainPastillero.py`:
+
+```Python
         if str(nombrePaciente)=='Omar Perez':
             #Substitute here your ThingSpeak API Key
             self.web("PK1UENEO00MJXH4R", int(temperatura), int(oxigeno), int(presion))
 ```
-
-### Running this project in a real TurtleBot3 🔩
-
-If you want to reproduce this project with a real TurtleBot3
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Team members ✒️ NASH
 
