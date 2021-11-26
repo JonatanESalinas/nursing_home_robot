@@ -49,6 +49,7 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         self.GuardarHoras.clicked.connect(self.agregaNuevoRecorrido)
         self.GuardarSignosVitales.clicked.connect(self.seleccionPaciente)
 
+    #Function to verify the credentials
     def PassaworOk(self):
         UsuarioQT = self.EntradaUsuario.toPlainText()
         ContraQT = self.EntradaContra.toPlainText()
@@ -116,8 +117,9 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
                 columna+=1
             fila+=1       
 
+    # This function creates a new object of the class "Recorrido", with the information of the route
+    # that the robot will make.
     def agregaNuevoRecorrido(self):
-
         nombreSeleccionado = self.NombresPacientes.currentText()
         hora_elegida = self.HorasComoBox.currentText()
         minutos_elegidos = self.MinutosComoBox.currentText()
@@ -131,8 +133,8 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
         personaDelRecorrido = self.buscaAHabitante(nombreSeleccionado)
         
         nuevoRecorrido = Recorrido(personaDelRecorrido.Nombre, personaDelRecorrido.habitacionX, personaDelRecorrido.habitacionY, hora_elegida, minutos_elegidos, personaDelRecorrido.Pastillero)
-
-            
+        
+        #The new itinerary is put into a table in the GUI
         renglonPos = self.tablaRecorridos.rowCount()
         self.tablaRecorridos.insertRow(renglonPos)
         self.tablaRecorridos.setItem(renglonPos , 0, QtWidgets.QTableWidgetItem(nombreSeleccionado))
@@ -146,10 +148,12 @@ class Ui_InterfazViva(QtWidgets.QDialog,Ui_InterfazViva):
 
         self.funcion_nuevo_recorrido(nuevoRecorrido, nombre_hilo)
 
+    #This function creates and starts a new thread, that corresponds to a new programmed itinerary for the robot.
     def funcion_nuevo_recorrido(self, unRecorrido, nombre_recorrido):
         hilo_pendiente_de_la_hora = threading.Thread(target= mi_Robot.checa_la_hora, args=(unRecorrido,), name=nombre_recorrido)
         hilo_pendiente_de_la_hora.start()
-     
+    
+    #Function that search for a specific elderly person in a list
     def buscaAHabitante(self, nombre_a_buscar):
         for i in range(0, len(mi_Asilo.habitantes_lista)):
             if mi_Asilo.habitantes_lista[i].Nombre == nombre_a_buscar:

@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 # lsusb to check device name
 #dmesg | grep "tty" to find port name
+'''
+    Code to test serial communication with an Arduino Board.
+'''
 import serial,time
 
 

@@ -4,7 +4,7 @@ This repository contains the code of the project "PillBot", a nursing home assis
 
 The medicine delivery is performed with the use of a set of automatic pillboxes that the robot carry with it. Once in the elderly person's room, with the help of a RFID sensor and a card, the robot is able to authenticate the nurse. Once the nurse has been authenticated, the correct pillbox will open and the nurse will take the medicine from it to give it to the elder person, ensuring that whoever is going to take it is really the right person.
 
-The Graphical User Interface also supports elderly person's vital signs registration (Temperature, Oxigen and Blood Presure). Once a new set of vital signs data has been entered into the interface, it is shown in a table, and it is sended to a ThingSpeak IoT dashboard as well, for remote monitoring of the health of the elderly person.
+The Graphical User Interface also supports elderly person's vital signs registration (Temperature, Oxigen and Blood Pressure). Once a new set of vital signs data has been entered into the interface, it is shown in a table, and it is sended to a ThingSpeak IoT dashboard as well, for remote monitoring of the health of the elderly person.
 
 This prototype was implemented using a TurtleBot3 Waffle Pi with Robot Operating System (Kinetic Kame).
 
@@ -39,10 +39,10 @@ _This is a list of other **software** that we used to build the whole applicatio
 _And the **hardware** tools used to build the robot:_
 
 * [TurtleBot3 Waffle Pi](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Raspberry Pi 3 (included in the Turtlebot)](https://maven.apache.org/) - Manejador de dependencias
+* [Raspberry Pi 3 (included with the Turtlebot)](https://maven.apache.org/) - Manejador de dependencias
 * [Arduino UNO board](https://maven.apache.org/) - Manejador de dependencias
 * [3 Servomotors](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Beats speaker audio AUX cable](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Beats speaker with audio AUX cable](https://rometools.github.io/rome/) - Usado para generar RSS
 * [RFID RC522 Sensor with a card](https://rometools.github.io/rome/) - Usado para generar RSS
 
 _Others:_
@@ -74,6 +74,8 @@ Then, in other terminal, run the main code. The GUI should appear:
 
 ![Interfaz_PillBot](https://user-images.githubusercontent.com/38736789/143507270-3d6ce94a-1934-4592-a9e7-119cdb4861b2.jpeg)
 
+Go to the section "Interface Functionalities" to see what can you do from here with the GUI and the robot.
+
 ## Running this project in a real TurtleBot3 🔩
 
 If you want to reproduce this project with a real TurtleBot3, check the hardware components used in the "Hardware" section of this README.
@@ -91,9 +93,9 @@ Then, execute the instructions listed [here](https://emanual.robotis.com/docs/en
 
 As stated [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/#run-navigation-nodes) in section 5.1, launch the navigation with:
 
-    export TURTLEBOT3_MODEL=burger
+    $export TURTLEBOT3_MODEL=waffle_pi
 
-    roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+    $roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
 
 Make sure to specify the sorrect path to the map. After doing this, RViz will appear. In another terminal located at `/nursing_home_robot`, load the next file to the parameters server:
 
@@ -129,7 +131,7 @@ In the Schedules tab ("Horario del dia" in Spanish), the nurse can program the r
 ![Horario_del_dia](https://user-images.githubusercontent.com/38736789/143507470-637ebb9e-223d-4f59-bce8-68d7f348430a.jpeg)
 
 
-When its time, the robot will visit the elder person's room to deliver medicine. When the robot arrives to the room, it will reproduce an audio to anounce it arrival (using mpg321).
+When its time, the robot will visit the elder person's room to deliver medicine. When the robot arrives to the room, it will reproduce an audio to anounce its arrival (using mpg321).
 
 Once the robot has arrived and has said a phrase, the nurse must pass the card in front of the RFID sensor for authentication purposes. Once done, the correct pillbox will be opened, for the nurse to take the pills and give them to the elderly person. When this is finished, the nurse must push the button on the robot, to indicate that the pillbox must close. In the simulation, the authentication of the nurse using the RFID sensor and the card, and the opening of the pillbox is omitted.
 
@@ -158,6 +160,10 @@ You can create your own ThingSpeak account clicking [here](https://thingspeak.co
             self.web("PK1UENEO00MJXH4R", int(temperatura), int(oxigeno), int(presion))
 ```
 
+## Video 📄 NASH
+
+Video aca
+
 ## Team members ✒️ NASH
 
 This project was developed by:
@@ -167,10 +173,6 @@ This project was developed by:
 * **Jonatan Emanuel Salinas Ávila** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 * **Ximena Aaroni Salinas Molar** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 * **Martín Octavio García García** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-## Video 📄 NASH
-
-Video aca
 
 ## Acknowledges 🎁 NASH
 
