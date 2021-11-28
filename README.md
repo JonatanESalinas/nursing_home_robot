@@ -1,8 +1,8 @@
 # Nursing Home Assistant Robot "PillBot"
 
-This repository contains the code of the project "PillBot", a nursing home assistant robot. This robotic application is aimed to support caregivers to manage and deliver the medical treatment for elderly people in a nursing home. Using a Graphical User Interface, PillBot can be programmed at a specific time to deliver a medicine corresponding to the elderly person in their room.
+This repository contains the code of the project "PillBot", a nursing home assistant robot. This robotic application is aimed to support caregivers to manage and deliver the medical treatment for elderly people in a nursing home. Using a Graphical User Interface, PillBot can be programmed to deliver a medicine at a specific time, at the corresponding elderly person's room.
 
-The medicine delivery is performed with the use of a set of automatic pillboxes that the robot carry with it. Once in the elderly person's room, with the help of a RFID sensor and a card, the robot is able to authenticate the nurse. Once the nurse has been authenticated, the correct pillbox will open and the nurse will take the medicine from it to give it to the elder person, ensuring that whoever is going to take it is really the right person.
+The medicine delivery is performed with the use of a set of automatic pillboxes that the robot carry with it. Once inside the elderly person's room, with the help of a RFID sensor and a card, the robot is able to authenticate the nurse. Once the nurse has been authenticated, the correct pillbox will open and the nurse will take the medicine from it to give it to the elderly person, ensuring that whoever is going to take it is really the right person.
 
 The Graphical User Interface also supports elderly person's vital signs registration (Temperature, Oxigen and Blood Pressure). Once a new set of vital signs data has been entered into the interface, it is shown in a table, and it is sended to a ThingSpeak IoT dashboard as well, for remote monitoring of the health of the elderly person.
 
@@ -26,9 +26,9 @@ The following is a list of the software requirements to run this project:
 * [mpg321](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [laser_filters package](https://maven.apache.org/) - Manejador de dependencias
 
-## Software and Hardware tools NASH🛠️
+## Software and Hardware used NASH🛠️
 
-_This is a list of other **software** that we used to build the whole application:_
+This is a list of the **software** that we used to build the whole application:
 
 * [ThingSpeak](https://rometools.github.io/rome/) - Usado para generar RSS
 * [Qt Designer](https://maven.apache.org/) - Manejador de dependencias
@@ -36,7 +36,7 @@ _This is a list of other **software** that we used to build the whole applicatio
 * [Gazebo](https://rometools.github.io/rome/) - Usado para generar RSS
 * [RViz](https://rometools.github.io/rome/) - Usado para generar RSS
 
-_And the **hardware** tools used to build the robot:_
+And the **hardware** tools used to build the robot:
 
 * [TurtleBot3 Waffle Pi](https://rometools.github.io/rome/) - Usado para generar RSS
 * [Raspberry Pi 3 (included with the Turtlebot)](https://maven.apache.org/) - Manejador de dependencias
@@ -44,6 +44,7 @@ _And the **hardware** tools used to build the robot:_
 * [3 Servomotors](https://rometools.github.io/rome/) - Usado para generar RSS
 * [Beats speaker with audio AUX cable](https://rometools.github.io/rome/) - Usado para generar RSS
 * [RFID RC522 Sensor with a card](https://rometools.github.io/rome/) - Usado para generar RSS
+* [A pushbutton](https://rometools.github.io/rome/) - Usado para generar RSS
 
 _Others:_
 
@@ -54,9 +55,9 @@ _Others:_
 
 ## Simulation 🔧
 
-It is possible to run this project in a simulated environment, making use of a house model in Gazebo and the TurleBot3 Waffle simulated model. The following are the steps to run it:
+It is possible to run this project in a simulated environment, making use of the [TurtleBot3 house](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation) model in Gazebo and the TurleBot3 Waffle Pi simulated model. The following are the steps to run it:
 
-In a terminal, run the launch file to launch the simulation (Gazebo and RViz). This launch file is `nursing_robot_simulation.launch`. Before launch it, please modify in this launch file the path according to the location of the house map in your machine. In this repo, there is already a map of the Gazebo house in the `maps` folder: `mapcasa.pgm` and `mapcasa.yaml`. Then, launch the file using:
+In a terminal, launch the launch file for the simulation (Gazebo and RViz). This launch file is `nursing_robot_simulation.launch`. Before launch it, please modify in this launch file the path according to the location of the house map in your machine. In this repo, there is already a map of the Gazebo house in the `maps` folder: `mapcasa.pgm` and `mapcasa.yaml`. Then, launch the file using:
 
     roslaunch nursing_home_robot nursing_robot_simulation.launch
 
@@ -78,12 +79,12 @@ Go to the section "Interface Functionalities" to see what can you do from here w
 
 ## Running this project in a real TurtleBot3 🔩
 
-If you want to reproduce this project with a real TurtleBot3, check the hardware components used in the "Hardware" section of this README.
+If you want to reproduce this project with a real TurtleBot3, check the hardware components used in the "Software and Hardware used" section of this README.
 
 ### Previous configuration 🔧
 First of all, clone this repo in your machine.
 
-This project uses a laser filter to filter scan readings of the robot's sensor. To implemement this, we modified two files of the turtlebot3 packages installation. Please substitute the `move_base.launch` and the `turtlebot3_navigation.launch` files located at `/opt/ros/kinetic/share/turtlebot3_navigation/launch` for the ones with the same name located inside the launch folder of this repo. This in order to remap the `/scan` readings to `/scan_filtered`.
+This project uses a laser filter to filter scan readings of the robot's sensor, due to the metalic bars at the corners that support the upper floor. To implemement this, we modified two files of the turtlebot3 packages installation. Please substitute the `move_base.launch` and the `turtlebot3_navigation.launch` files located at `/opt/ros/kinetic/share/turtlebot3_navigation/launch` for the ones with the same name located inside the launch folder of this repo. This in order to remap the `/scan` readings to `/scan_filtered`.
 
 ### Running the project  🔧
 
@@ -97,7 +98,7 @@ As stated [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/navigat
 
     $roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
 
-Make sure to specify the sorrect path to the map. After doing this, RViz will appear. In another terminal located at `/nursing_home_robot`, load the next file to the parameters server:
+Make sure to specify the correct path to the map. After doing this, RViz will appear. In another terminal located at `/nursing_home_robot`, load the next file to the parameters server:
 
     rosparam load my_laser_config.yaml scan_to_scan_filter_chain
 
@@ -120,18 +121,18 @@ Then, again in the remote PC, run the main code. The GUI should appear:
 ![Interfaz_PillBot](https://user-images.githubusercontent.com/38736789/143507270-3d6ce94a-1934-4592-a9e7-119cdb4861b2.jpeg)
 
 ## Interface functionalities
-It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use `Username` as the Username and `Password` as the Password. Once you clic in the "Iniciar Sesion" button, the different tabs of the GUI will be activated.
+It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use `Username` as the Username and `Password` as the Password. Once you click in the "Iniciar Sesion" button, the different tabs of the GUI will be activated.
 
 ![Interfaz_PillBot_user](https://user-images.githubusercontent.com/38736789/143507331-b3191802-e819-4d17-858f-f16c4698868a.jpeg)
 
-### Schedules tab (Horario del dia) ⚙️
+### Day schedule tab (Horario del dia) ⚙️
 
 In the Schedules tab ("Horario del dia" in Spanish), the nurse can program the robot to deliver medicine to a specific elderly person, at a specific hour. The nurse just need to select the elderly patient from the combo box, and specify the hour at which the robot will visit that person. When the "Guardar" button is clicked, the walk is scheduled in the robot's itinerary.
 
 ![Horario_del_dia](https://user-images.githubusercontent.com/38736789/143507470-637ebb9e-223d-4f59-bce8-68d7f348430a.jpeg)
 
 
-When its time, the robot will visit the elder person's room to deliver medicine. When the robot arrives to the room, it will reproduce an audio to anounce its arrival (using mpg321).
+When its time, the robot will visit the elderly person's room to deliver medicine. When the robot arrives to the room, it will reproduce an audio to anounce its arrival (using mpg321).
 
 Once the robot has arrived and has said a phrase, the nurse must pass the card in front of the RFID sensor for authentication purposes. Once done, the correct pillbox will be opened, for the nurse to take the pills and give them to the elderly person. When this is finished, the nurse must push the button on the robot, to indicate that the pillbox must close. In the simulation, the authentication of the nurse using the RFID sensor and the card, and the opening of the pillbox is omitted.
 

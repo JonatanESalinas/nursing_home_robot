@@ -1,4 +1,19 @@
 #!/usr/bin/env python
+'''
+    Servicio.py
+
+    Carlos Mario Bielma Avendano        A01730645  
+    Nashely Martinez Chan               A01329786
+    Jonatan Emanuel Salinas Avila       A01731815
+    Ximena Aaroni Salinas Molar         A01551723
+    Martin Octavio Garcia Garcia        A01328971
+
+    Courses:
+        Robotics Project
+        Embedded Systems laboratory
+    
+    November, 2021
+'''
 import os
 import rospy
 import serial,time

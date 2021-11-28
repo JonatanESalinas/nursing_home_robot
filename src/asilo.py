@@ -1,12 +1,27 @@
+'''
+    asilo.py
+
+    Carlos Mario Bielma Avendano        A01730645  
+    Nashely Martinez Chan               A01329786
+    Jonatan Emanuel Salinas Avila       A01731815
+    Ximena Aaroni Salinas Molar         A01551723
+    Martin Octavio Garcia Garcia        A01328971
+
+    Courses:
+        Robotics Project
+        Embedded Systems laboratory
+    
+    November, 2021
+'''
 from Persona import Persona
 
 class Asilo:
     def __init__(self):
 
-        #Lista de habitantes de asilo
+        #Nursing home habitants list
         self.habitantes_lista = list()
 
-        #Coordenadas de la casa de Gazebo - (Descomentar si se estan haciendo pruebas con simulacion)
+        #Coordinates of the nursing home cardboard model that we used to test the application with the real TurtleBot3
         self.xBase = 1.27
         self.yBase = -0.731
         self.xRoom1 = 4.06
@@ -16,24 +31,11 @@ class Asilo:
         self.xRoom3 = 2.27
         self.yRoom3 = -0.731
 
-        #Coordenadas del laboratorio - (Descomentar si se estan haciendo pruebas fisicas en el labo)
-        '''
-        self.xBase = 1.9	
-        self.yBase = -3.54
-        self.xRoom1 = 0.828
-        self.yRoom1 = 4.83
-        self.xRoom2 = -1.81
-        self.yRoom2 = 2.03
-        self.xRoom3 = 0.0192
-        self.yRoom3 = -0.212
-        #self.xRoom4 = -1.41       #por si no sirve alguna coordenada de arriba, intentar con esta otra coordenada
-        #self.yRoom4 = -3.35  
-        '''
-
         self.goalReached = False
 
         self.llena_habitantes()
 
+    #Function that adds elderly people information to a list
     def llena_habitantes(self):
         self.habitantes_lista.append(Persona("Omar Perez", 1, "PK1UENEO00MJXH4R", 1, self.xRoom1, self.yRoom1))
         self.habitantes_lista.append(Persona("Ricardo Flores", 2, "1GRO3H7UWGWXBYHQ", 2, self.xRoom2, self.yRoom2))   

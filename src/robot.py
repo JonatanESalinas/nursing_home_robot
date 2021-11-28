@@ -1,4 +1,19 @@
 #!/usr/bin/env python
+'''
+    robot.py
+
+    Carlos Mario Bielma Avendano        A01730645  
+    Nashely Martinez Chan               A01329786
+    Jonatan Emanuel Salinas Avila       A01731815
+    Ximena Aaroni Salinas Molar         A01551723
+    Martin Octavio Garcia Garcia        A01328971
+
+    Courses:
+        Robotics Project
+        Embedded Systems laboratory
+    
+    November, 2021
+'''
 import os
 import threading
 import rospy
@@ -7,7 +22,6 @@ from actionlib_msgs.msg import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import Point
 import datetime
-#import serial, time
 from std_srvs.srv import Trigger, TriggerRequest, TriggerResponse
 from std_msgs.msg import String
 
@@ -27,15 +41,9 @@ class Robot:
         rospy.loginfo("Habitacion service server hallado")
         self.conexionCliente_HabsServ = rospy.ServiceProxy('/habitacion_service_server', Trigger)
 
-        #Coordenadas de base de la casa de Gazebo (Descomentar si se estan haciendo pruebas con simulacion):
+        #Coordinates of the base of the nursing home cardboard model that we used to test the application
         self.xBase = 1.27                   
         self.yBase = -0.731
-
-        #Coordenadas de la base de labo (Descomentar si se estan haciendo pruebas fisicas en el labo):
-        '''
-        self.xBase = 1.9	
-        self.yBase = -3.54
-        '''
 
         self.my_rate = rospy.Rate(1)
 
@@ -54,15 +62,6 @@ class Robot:
 
         rospy.loginfo("")
         self.clienteAccionBase.send_goal(goal)
-
-    def decir_hola_hora_medicina(self):                     #Estas funciones se pueden eliminar, pues ya estan en el servicio**
-        os.system("mpg321 ../voice/medicina_only.mp3")
-
-    def decir_tenga_buen_dia(self):
-        os.system("mpg321 ../voice/tenga_buen_dia.mp3")
-
-    def decir_gracias_hasta_luego(self):
-        os.system("mpg321 ../voice/gracias_hasta_luego.mp3")
 
     def publicaNumero_pastillero(self, num_pastillero):
         bandera = False
@@ -90,8 +89,6 @@ class Robot:
                 if(minuto==mi_recorrido.minutos_medicina):
                     print(threading.current_thread().getName())
                     print("El robot debe ir a su destino ahora. X: " + str(mi_recorrido.habitacion_X) + " Y: " + str(mi_recorrido.habitacion_Y))
-
-                    #es_la_hora = True       #esto parece que se tiene que borrar despues!!!
 
                     llegue_bien_a_habitacion = False
 
