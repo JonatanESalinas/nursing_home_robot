@@ -41,7 +41,7 @@ And the **hardware** tools used to build the robot:
 * [TurtleBot3 Waffle Pi](https://www.turtlebot.com/) - TurtleBot3 Waffle Pi was the robot itself.
 * [Raspberry Pi 3 (included with the Turtlebot)](https://www.raspberrypi.com/) - Raspberry Pi 3 is a single-board computer which had the serial connection with the Arduino and the speaker output.
 * [Arduino UNO board](https://www.arduino.cc/) - Arduino Uno is a microcontroller board based on the ATmega328P that takes care to manage the actuators and sensors of the project.
-* [3 Servomotors](https://www.beatsbydre.com/) - A servo motor is a self-contained electrical device, that rotate for open and close the pillbox.
+* [3 Servomotors](https://realpars.com/servo-motor/) - A servo motor is a self-contained electrical device, that rotate for open and close the pillbox.
 * [Beats speaker with audio AUX cable](https://www.beatsbydre.com/) - Speaker used to play mp3 audio.
 * [RFID RC522 Sensor with a card](https://www.seeedstudio.com/blog/2019/11/04/rfid-how-does-it-work-and-how-to-use-it-with-the-arduino/) - It is a sensor with a radio frequency module, which acts as a transmitter and receiver, that will generate a high frequency electromagnetic field when a tag is nearby caused by induction. FFor this project it was used to have a method of identification by the user.
 * [A pushbutton](https://components101.com/switches/push-button) - It was used as a notification by the user for the robot to close the pillbox.
