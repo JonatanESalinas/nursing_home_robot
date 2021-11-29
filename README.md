@@ -174,7 +174,7 @@ This project was developed by:
 * **Ximena Aaroni Salinas Molar** - *A01551723* - [AaroniSalinas](https://github.com/AaroniSalinas)
 * **Martín Octavio García García** - *A01328971* - [martinisho](https://github.com/martinisho)
 
-## Acknowledges 🎁 NASH
+## Acknowledges 🎁 
 
 Particular recognition:
 * Dr. Hugo González Hernández
