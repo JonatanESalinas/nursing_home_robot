@@ -16,36 +16,35 @@ This project aims to substantially decrease the risk for the elders of missing a
 
 Moreover, the process of register and store person's vital signs data is digitized, which makes the whole procedure more comfortable for the caregivers, and the data can be consulted and visualized more easily.
 
-## Requirements NASH📋
+## Requirements 📋
 
 The following is a list of the software requirements to run this project:
 
-* [ROS Kinetic Kame](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [TurtleBot3 Packages](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Python 2](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [mpg321](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [laser_filters package](https://maven.apache.org/) - Manejador de dependencias
+* [ROS Kinetic Kame](http://wiki.ros.org/kinetic) - ROS Kinetic Kame is the 10th release from ROS distribution and is primarily targeting for Ubuntu 16.04 (Xenial), in this project for a better managment of coding.
+* [TurtleBot3 Packages](http://wiki.ros.org/turtlebot3) - TurtleBot3 packages allow us the functionality in an easy, fast and safe way for the user.
+* [Python 2](https://www.python.org/doc/essays/blurb/) - Python is an interpreted, object-oriented, high-level programming language with dynamic semantics, thanks to this it turned out to be the best programming language to gather all the details of the project.
+* [mpg321](https://linux.die.net/man/1/mpg321) - mpg321 is a very popular command-line mp3 player that we used for play the audios for the user.
+* [laser_filters package](http://wiki.ros.org/laser_filters) - This package provides two nodes that can run multiple filters internally. Using these nodes to run our filters that stop detecting the metal posts used for the platform on the robot.
 
-## Software and Hardware used NASH🛠️
+## Software and Hardware used 🛠️
 
 This is a list of the **software** that we used to build the whole application:
 
-* [ThingSpeak](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Qt Designer](https://maven.apache.org/) - Manejador de dependencias
-* [Arduino IDE](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Gazebo](https://rometools.github.io/rome/) - Usado para generar RSS
-* [RViz](https://rometools.github.io/rome/) - Usado para generar RSS
+* [ThingSpeak](https://thingspeak.com/) - ThingSpeak™ is an IoT analytics platform service that allows you to aggregate, visualize and analyze live data streams in the cloud; with all this we take advantage of the programming language and show all the vital signs of each patient.
+* [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) - Qt Designer is the Qt tool for designing and building graphical user interfaces (GUIs) with Qt Widgets. The interface was used to have a better data visualization and handling of the robot for the user.
+* [Arduino IDE](https://www.arduino.cc/) - Arduino Software (IDE) allows us to write programs and upload them to our board for the operating actuators
+* [Gazebo](http://gazebosim.org/) - Gazebo was the robot simulation tool that makes us possible to rapidly test algorithms.
+* [RViz](http://wiki.ros.org/rviz) - RViz is a 3D visualization tool for ROS applications. Provid us of a view of the robot model, capture the information from the robot's sensors, and reproduce the captured data.
 
 And the **hardware** tools used to build the robot:
 
-* [TurtleBot3 Waffle Pi](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Raspberry Pi 3 (included with the Turtlebot)](https://maven.apache.org/) - Manejador de dependencias
-* [Arduino UNO board](https://maven.apache.org/) - Manejador de dependencias
-* [3 Servomotors](https://rometools.github.io/rome/) - Usado para generar RSS
-* [Beats speaker with audio AUX cable](https://rometools.github.io/rome/) - Usado para generar RSS
-* [RFID RC522 Sensor with a card](https://rometools.github.io/rome/) - Usado para generar RSS
-* [A pushbutton](https://rometools.github.io/rome/) - Usado para generar RSS
-
+* [TurtleBot3 Waffle Pi](https://www.turtlebot.com/) - TurtleBot3 Waffle Pi was the robot itself.
+* [Raspberry Pi 3 (included with the Turtlebot)](https://www.raspberrypi.com/) - Raspberry Pi 3 is a single-board computer which had the serial connection with the Arduino and the speaker output.
+* [Arduino UNO board](https://www.arduino.cc/) - Arduino Uno is a microcontroller board based on the ATmega328P that takes care to manage the actuators and sensors of the project.
+* [3 Servomotors](https://www.beatsbydre.com/) - A servo motor is a self-contained electrical device, that rotate for open and close the pillbox.
+* [Beats speaker with audio AUX cable](https://www.beatsbydre.com/) - Speaker used to play mp3 audio.
+* [RFID RC522 Sensor with a card](https://www.seeedstudio.com/blog/2019/11/04/rfid-how-does-it-work-and-how-to-use-it-with-the-arduino/) - It is a sensor with a radio frequency module, which acts as a transmitter and receiver, that will generate a high frequency electromagnetic field when a tag is nearby caused by induction. FFor this project it was used to have a method of identification by the user.
+* [A pushbutton](https://components101.com/switches/push-button) - It was used as a notification by the user for the robot to close the pillbox.
 _Others:_
 
 * Extra wood-floor for the TurtleBot
@@ -161,26 +160,35 @@ You can create your own ThingSpeak account clicking [here](https://thingspeak.co
             self.web("PK1UENEO00MJXH4R", int(temperatura), int(oxigeno), int(presion))
 ```
 
-## Video 📄 NASH
+## Video 📄 
 
-Video aca
+https://youtu.be/1WkLW_bywDA
 
-## Team members ✒️ NASH
+## Team members ✒️ 
 
 This project was developed by:
 
-* **Carlos Mario Bielma Avendaño** - *A017* - [villanuevand](https://github.com/villanuevand)
-* **Nashely Martínez Chan** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-* **Jonatan Emanuel Salinas Ávila** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-* **Ximena Aaroni Salinas Molar** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-* **Martín Octavio García García** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* **Carlos Mario Bielma Avendaño** - *A01730645* - [CarlosBielma](https://github.com/CarlosBielma)
+* **Nashely Martínez Chan** - *A01329786* - [NasheChan](https://github.com/NasheChan)
+* **Jonatan Emanuel Salinas Ávila** - *A01731815* - [JonatanESalinas](https://github.com/JonatanESalinas)
+* **Ximena Aaroni Salinas Molar** - *A01551723* - [AaroniSalinas](https://github.com/AaroniSalinas)
+* **Martín Octavio García García** - *A01328971* - [martinisho](https://github.com/martinisho)
 
 ## Acknowledges 🎁 NASH
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+Particular recognition:
+* Dr. Hugo González Hernández
+* Dr. José Manuel Medina Pozos
+* Dr. Iván Olmos Pineda
+* Dr. César Torres Huitzil
+* Dr. Emmanuel Torres Ríos
+* Dr. David Antonio Torres
+* Mtro. Roberto Julián Mora Salinas
+* Mtro. Jorge Andrade Román
+* Dra. Daniela Martínez (Residencia VivAlma)
+* Geloisa Sierra (Asilo “Casa de Descanso”)
+
+
 
 ---
 November 2021.
