@@ -41,9 +41,9 @@ class Robot:
         rospy.loginfo("Habitacion service server hallado")
         self.conexionCliente_HabsServ = rospy.ServiceProxy('/habitacion_service_server', Trigger)
 
-        #Coordinates of the base of the nursing home cardboard model that we used to test the application
-        self.xBase = 1.27                   
-        self.yBase = -0.731
+        #Coordinates of the base at the TurtleBot Gazebo House for simulation:
+        self.xBase = -6.5530	
+        self.yBase = 3.5
 
         self.my_rate = rospy.Rate(1)
 

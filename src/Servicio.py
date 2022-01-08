@@ -49,6 +49,9 @@ class HabitacionServer(object):
         #print("****Se supone que voy a mandar al arduino esto : " + self.miHabitacion.data)
         rospy.sleep(5)
         
+        '''
+        #Serial communication code with Arduino is commented here for simulation purposes.
+        
         print('Running. Press CTRL-C to exit.')
         with serial.Serial("/dev/ttyUSB1", 9600, timeout=1) as arduino:
             time.sleep(5.5) #wait for serial to open
@@ -93,7 +96,7 @@ class HabitacionServer(object):
                             break
                 except KeyboardInterrupt:
                     print("KeyboardInterrupt has been caught.")
-        
+        '''
 
         self.decir_gracias_hasta_luego()
         self.decir_tenga_buen_dia()

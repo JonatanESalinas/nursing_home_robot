@@ -54,7 +54,8 @@ _Others:_
 
 ## Simulation 🔧
 
-It is possible to run this project in a simulated environment, making use of the [TurtleBot3 house](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation) model in Gazebo and the TurleBot3 Waffle Pi simulated model. The following are the steps to run it:
+It is possible to run this project in a simulated environment, making use of the [TurtleBot3 house](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation) model in Gazebo and the TurleBot3 Waffle Pi simulated model. Please
+go to the `simulation` branch on this repo for this. The following are the steps to run the simulation:
 
 In a terminal, launch the launch file for the simulation (Gazebo and RViz). This launch file is `nursing_robot_simulation.launch`. Before launch it, please modify in this launch file the path according to the location of the house map in your machine. In this repo, there is already a map of the Gazebo house in the `maps` folder: `mapcasa.pgm` and `mapcasa.yaml`. Then, launch the file using:
 
