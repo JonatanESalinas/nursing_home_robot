@@ -61,11 +61,13 @@ In a terminal, launch the launch file for the simulation (Gazebo and RViz). This
 
     roslaunch nursing_home_robot nursing_robot_simulation.launch
 
+_Note: If you first did the steps to implement the laser_filter in the `Running this project in a real TurtleBot3` section of this README, please execute the commands in that section to load and run the laser filter in order to see the robot in RViz. If you have not tryed to implement the laser filter for the simulation, don't worry, go ahead with the instructions._
+
 It is recommended to follow the steps listed [here](https://emanual.robotis.com/docs/en/platform/turtlebot3/nav_simulation/) to estimate the initial pose of the robot. In another terminal, you can launch the `turtlebot3_teleop_key.launch` to estimate more precisely the pose:
 
     roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
-In another terminal, run the Habitacion Service server:
+In a **terminal located** at `/nursing_home_robot/src` , run the Habitacion Service server :
 
     rosrun nursing_home_robot Servicio.py
 
@@ -110,7 +112,7 @@ It is recommended to follow the steps listed [here](https://emanual.robotis.com/
 
     roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
-In the SBC of the TurtleBot3, in a terminal located at `/nursing_home_robot/src` run the Habitacion Service server:
+In the SBC of the TurtleBot3, in a **terminal located** at `/nursing_home_robot/src` run the Habitacion Service server:
 
     rosrun nursing_home_robot Servicio.py
 
@@ -121,7 +123,7 @@ Then, again in the remote PC, run the main code. The GUI should appear:
 ![Interfaz_PillBot](https://user-images.githubusercontent.com/38736789/143507270-3d6ce94a-1934-4592-a9e7-119cdb4861b2.jpeg)
 
 ## Interface functionalities
-It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use `Username` as the Username and `Password` as the Password. Once you click in the "Iniciar Sesion" button, the different tabs of the GUI will be activated.
+It is possible for a nurse of the nursing home to login into the GUI application using the corresponding credentials. In this case, use `Usuario` as the Username and `Password` as the Password. Once you click in the "Iniciar Sesion" button, the different tabs of the GUI will be activated.
 
 ![Interfaz_PillBot_user](https://user-images.githubusercontent.com/38736789/143507331-b3191802-e819-4d17-858f-f16c4698868a.jpeg)
 
